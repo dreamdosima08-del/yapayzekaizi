@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neden Türkçe Metinlerde Yapay Zeka Tespiti Daha Zordur? (Dilbilimsel Açıklama)</title>
+<meta name="description" content="Türkçe AI tespiti neden İngilizce'den zordur? Sondan eklemeli yapı, yanlış pozitif sorunu ve sade yazan insanların neden AI sanıldığı — dilbilimsel ve dürüst bir açıklama.">
+<meta name="keywords" content="türkçe yapay zeka tespiti, ai dedektör türkçe, türkçe ai detector, yanlış pozitif, türkçe metin analizi, sondan eklemeli dil ai">
+<link rel="canonical" href="https://yapayzekaizi.com/blog-turkce-neden-zor.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neden Türkçe Metinlerde Yapay Zeka Tespiti Daha Zordur?">
+<meta property="og:description" content="Sondan eklemeli yapı, yanlış pozitif ve sade yazan insanların neden AI sanıldığı — dürüst bir dilbilimsel açıklama.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Türkçe metinlerde yapay zeka tespiti neden daha zordur?","acceptedAnswer":{"@type":"Answer","text":"Çoğu tespit aracı ağırlıklı İngilizce veriyle eğitilmiştir. Türkçe'nin sondan eklemeli yapısı, kelime çeşitliliği hesaplarını yanıltır. Ayrıca sade ve kalıplı yazan kişiler, dedektörlerin AI sandığı dil örüntülerini taşıdığı için yanlışlıkla işaretlenir."}},
+    {"@type":"Question","name":"Sade yazan bir insan neden yapay zeka sanılır?","acceptedAnswer":{"@type":"Answer","text":"Dedektörler 'tahmin edilebilir' ve 'tekdüze' metni AI sinyali sayar. Sade, kısa cümleli ve kalıplı yazan kişiler doğal olarak bu örüntüleri taşıdığı için yanlış pozitif riski yüksektir."}}
+  ]
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
+  :root{--bg:#070b14;--bg-2:#0b111e;--panel:#101829;--panel-2:#0d1421;--line:#1e2a42;
+    --paper:#e9eef7;--muted:#7e8eae;--cyan:#3fe0d0;--amber:#f2b34a;--coral:#f0685c;--r:16px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--paper);line-height:1.78;
+    background:linear-gradient(180deg,var(--bg),var(--bg-2));min-height:100vh}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;max-width:1040px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;text-decoration:none;color:var(--paper)}
+  .brand .logo{display:block;flex-shrink:0}
+  .brand .dot{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7ff5e9,var(--cyan));box-shadow:0 0 14px var(--cyan)}
+  .nav-links{display:flex;gap:26px;font-size:14px}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  article{padding:clamp(30px,6vw,60px) 0 40px}
+  .crumb{font-size:13px;color:var(--muted);margin-bottom:22px}
+  .crumb a{color:var(--cyan);text-decoration:none}
+  .cat{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:16px}
+  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(30px,5.2vw,50px);line-height:1.06;margin-bottom:18px}
+  .lede{font-size:clamp(17px,2.3vw,20px);color:#c8d2e6;margin-bottom:22px}
+  .byline{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+
+  article h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.6vw,32px);letter-spacing:-.01em;margin:42px 0 16px;line-height:1.15}
+  article p{font-size:16.5px;color:#c3cde0;margin-bottom:18px}
+  article strong{color:var(--paper)}
+  article ul{margin:0 0 20px;list-style:none}
+  article li{font-size:16px;color:#c3cde0;padding-left:24px;position:relative;margin-bottom:11px}
+  article li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:2px;background:var(--cyan)}
+
+  .pull{border-left:3px solid var(--amber);padding:6px 0 6px 22px;margin:28px 0;
+    font-family:'Fraunces',serif;font-size:22px;line-height:1.4;color:#f0e6cf;font-weight:500}
+  .keybox{background:rgba(63,224,208,.06);border:1px solid rgba(63,224,208,.22);border-radius:var(--r);padding:22px 24px;margin:28px 0}
+  .keybox h4{color:var(--cyan);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+  .keybox p{margin-bottom:8px;font-size:15.5px}
+  .keybox p:last-child{margin-bottom:0}
+
+  .example{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:20px 0;font-size:15px}
+  .example .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .example code{font-family:'Inter';color:#cfe;display:block;line-height:1.9}
+
+  .cta{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);
+    padding:30px;margin:46px 0 20px;text-align:center}
+  .cta h3{font-family:'Fraunces',serif;font-size:24px;margin-bottom:10px}
+  .cta p{color:var(--muted);margin-bottom:20px;font-size:15px}
+  .btn{display:inline-block;background:var(--cyan);color:#042622;font-weight:600;padding:13px 28px;border-radius:11px;text-decoration:none;transition:transform .15s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--cyan)}
+
+  .faq h3{font-size:18px;margin:22px 0 8px;color:var(--paper)}
+  .faq p{font-size:15.5px}
+  .src{font-size:13px;color:#56678a;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+  .foot-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .foot-links a{color:var(--muted);text-decoration:none;font-size:13px}
+  .foot-links a:hover{color:var(--cyan)}
+</style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="index.html"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz1" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz1)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</a>
+    <div class="nav-links">
+      <a href="index.html#analyzer">Analiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="yasal.html">Yasal</a>
+    </div>
+  </nav>
+
+<div class="wrap">
+<article>
+  <div class="crumb"><a href="blog.html">Blog</a> · Türkçe &amp; AI</div>
+  <div class="cat">Türkçe &amp; AI</div>
+  <h1>Neden Türkçe metinlerde yapay zeka tespiti daha zordur?</h1>
+  <p class="lede">Sade yazan bir öğrenci, hiç yapay zeka kullanmadığı halde neden "AI" olarak işaretlenir? Cevap, Türkçe'nin yapısında ve bu araçların nasıl eğitildiğinde gizli. İşte kimsenin dürüstçe anlatmadığı kısım.</p>
+  <div class="byline">YapayZekaİzi ekibi · Güncelleme: Haziran 2026 · 7 dakikalık okuma</div>
+
+  <p>Türkçe yapay zeka tespit araçlarının çoğu size aynı cümleyi kurar: "Türkçe için özel optimize edildik, yüksek başarı sağlıyoruz." Güzel bir pazarlama cümlesi. Ama tek bir gerçeği gizliyor: <strong>Türkçe, yapay zeka tespiti için dünyanın en zorlu dillerinden biridir.</strong> Ve bunu bilmek, hem öğrencileri hem de içerik üreticilerini haksız suçlamalardan korur.</p>
+
+  <p>Bu yazıda, bir dilbilimcinin gözünden, neden Türkçe metinlerde tespitin bu kadar kayganlaştığını anlatacağız. Hiçbir reklam cümlesi yok — sadece mekanizma.</p>
+
+  <h2>Birinci sorun: bu araçlar İngilizce için doğdu</h2>
+  <p>Neredeyse tüm büyük tespit araçları — GPTZero, Originality, Turnitin — ağırlıklı olarak İngilizce metinlerle eğitildi. Modeller "insan yazısı şöyle görünür, makine yazısı böyle görünür" ayrımını <em>İngilizce örnekler üzerinden</em> öğrendi.</p>
+  <p>Türkçe'ye geldiklerinde ise yabancı bir araziye düşmüş gibi olurlar. Çünkü Türkçe'nin matematiği İngilizce'ninkinden tamamen farklıdır.</p>
+
+  <h2>İkinci sorun: sondan eklemeli yapı her şeyi karıştırır</h2>
+  <p>Türkçe sondan eklemeli (aglütinatif) bir dildir. Tek bir köke arka arkaya ekler eklenerek koca bir cümlenin anlamı tek kelimeye sığdırılabilir. Klasik örnek:</p>
+
+  <div class="example">
+    <div class="lbl">Tek kelime, koca bir cümle</div>
+    <code><strong>ev</strong> → <strong>ev</strong>ler → <strong>ev</strong>lerimiz → <strong>ev</strong>lerimizden → <strong>ev</strong>lerimizdenmiş gibi</code>
+  </div>
+
+  <p>Tespit araçlarının önemli bir ölçütü <strong>kelime çeşitliliğidir</strong> (aynı kelimelerin ne sıklıkta tekrar ettiği). İngilizce'de "house, houses, our houses" üç ayrı kelime grubudur. Türkçe'de bunların hepsi "ev" kökünden türer. Yüzeyde bakan bir araç, Türkçe metni ya yapay biçimde "çeşitli" ya da yapay biçimde "tekrarlı" sayar — ikisi de yanlış sinyal üretir. Köke göre analiz yapmayan her araç, daha ilk adımda yanılır.</p>
+
+  <div class="pull">Türkçe'de bir kelimenin nerede bitip ekin nerede başladığını bilmeyen bir araç, daha ölçmeye başlamadan yanılmıştır.</div>
+
+  <h2>Üçüncü sorun: sade yazmak "AI gibi" yazmaktır</h2>
+  <p>İşte en adaletsiz kısım burası. Tespit araçları, "tahmin edilebilir" ve "tekdüze" metni yapay zeka sinyali sayar. Peki kimler doğal olarak böyle yazar?</p>
+  <ul>
+    <li>Sade ve kısa cümlelerle yazan kişiler</li>
+    <li>Akademik veya resmî üslubu benimseyen öğrenciler</li>
+    <li>İkinci dili olarak iyi ama "kitabi" Türkçe yazanlar</li>
+    <li>Net, kalıplı, düzenli ifade kullanmayı tercih edenler</li>
+  </ul>
+  <p>Bu insanlar yapay zeka kullanmıyor. Sadece <em>açık ve düzenli</em> yazıyorlar. Ama dedektörün gözünde açıklık ve düzen, tam da makine metninin imzasıdır. Sonuç: tertemiz, dürüst bir metin "yüksek AI etkisi" damgası yiyebilir.</p>
+
+  <p>Bu sadece bir varsayım değil. Stanford'da yapılan bir araştırma, dedektörlerin anadili İngilizce olmayan kişilerin denemelerinin %61'ini yanlışlıkla yapay zeka olarak işaretlediğini buldu. Sebep tam olarak buydu: sade kelime dağarcığı ve kalıplı cümle yapısı. Türkçe yazan milyonlarca kişi için aynı tuzak geçerlidir.</p>
+
+  <div class="keybox">
+    <h4>Türkçe tespitini zorlaştıran üç sebep</h4>
+    <p>→ Araçlar <strong>İngilizce veriyle</strong> eğitildi, Türkçe onlara yabancı.</p>
+    <p>→ <strong>Sondan eklemeli yapı</strong>, kelime çeşitliliği hesaplarını bozar.</p>
+    <p>→ <strong>Sade ve düzenli yazmak</strong>, yanlışlıkla "AI sinyali" sayılır.</p>
+  </div>
+
+  <h2>Peki dürüst bir araç ne yapmalı?</h2>
+  <p>Bu sınırları gizlemek yerine açıkça söylemeli. Bir Türkçe tespit aracının dürüst olması için:</p>
+  <ul>
+    <li><strong>"Kesin" değil "olası" demeli.</strong> Türkçe'de kesinlik iddiası baştan yanlıştır.</li>
+    <li><strong>Yanlış pozitif riskini açıkça uyarmalı.</strong> "Sade yazıyorsanız yüksek skor alabilirsiniz" demeli.</li>
+    <li><strong>Kişiyi değil metni değerlendirmeli.</strong> Skor, bir suçlama aracı değil, bir gözlem aracıdır.</li>
+    <li><strong>Skoru açıklamalı.</strong> Hangi sinyalin neden tetiklendiğini göstermeli ki kullanıcı kendi kararını verebilsin.</li>
+  </ul>
+
+  <p>Türkçe'de "yüzde doksan dokuz doğruluk" diyen bir araç gördüğünüzde, onun ya bu sınırları bilmediğini ya da bilip sakladığını varsayın. Çünkü dilin matematiği buna izin vermiyor.</p>
+
+  <div class="cta">
+    <h3>Sınırlarını bilen bir analiz deneyin</h3>
+    <p>Türkçe için, "kesin hüküm" değil açıklanabilir sinyaller. Skorun arkasındaki her dilsel izi görün.</p>
+    <a class="btn" href="index.html#analyzer">Metni analiz et</a>
+  </div>
+
+  <div class="faq">
+    <h2>Sık sorulan sorular</h2>
+    <h3>Sade yazdığım için metnim AI çıktı, ne yapmalıyım?</h3>
+    <p>Bu yaygın bir yanlış pozitiftir. Skoru bir hüküm olarak değil, sinyal olarak görün. Yazınızın taslak geçmişi, notlarınız ve süreciniz gerçek dayanağınızdır.</p>
+    <h3>Türkçe metinlerde hangi uzunluk daha güvenilir?</h3>
+    <p>Daha uzun metinler (80+ kelime) daha sağlıklı sinyal verir. Kısa Türkçe metinlerde hata oranı çok yükselir.</p>
+    <h3>Hiçbir Türkçe araca güvenilmez mi?</h3>
+    <p>Güvenilir kullanımın yolu, sonucu kesin kanıt değil yol gösterici sinyal olarak almaktır. Sınırlarını açıkça söyleyen araçlar, söylemeyenlerden daha güvenilirdir.</p>
+  </div>
+
+  <div class="src">
+    Kaynaklar: Liang et al., "GPT Detectors Are Biased Against Non-Native English Writers" (Stanford, Patterns, 2023); Türkçe dilbilimi — aglütinatif morfoloji üzerine genel kaynaklar. Bu yazı bilgilendirme amaçlıdır.
+  </div>
+</article>
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="blog.html">Blog</a>
+    <a href="blog-ai-tespit-mumkun-mu.html">Tespit mümkün mü?</a>
+    <a href="mailto:dreamdosima08@gmail.com">İletişim</a>
+  </div>
+  <p>YapayZekaİzi · dreamdosima08@gmail.com</p>
+</footer>
+</body>
+</html>

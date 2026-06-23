@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://yapayzekaizi.com/">
+<meta name="description" content="Bir metinde ne kadar yapay zeka etkisi var? Türkçe için dürüst, açıklanabilir metin analizi. Kesin hüküm değil, şeffaf sinyaller.">
+<meta property="og:title" content="YapayZekaİzi — Türkçe Yapay Zeka Metin Analizi">
+<meta property="og:description" content="Bir metinde ne kadar yapay zeka etkisi var? Dürüst, açıklanabilir bir analiz.">
+<meta property="og:type" content="website">
+<title>YapayZekaİzi — Türkçe Yapay Zeka Metin Analizi | Ne Kadar AI Etkisi Var?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#070b14;
+    --bg-2:#0b111e;
+    --panel:#101829;
+    --panel-2:#0d1421;
+    --line:#1e2a42;
+    --line-soft:rgba(22,32,51,.32);
+    --paper:#e9eef7;
+    --muted:#7e8eae;
+    --cyan:#3fe0d0;
+    --amber:#f2b34a;
+    --coral:#f0685c;
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;color:var(--paper);line-height:1.65;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
+    min-height:100vh;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:54px 54px;
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
+    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
+    opacity:.5;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.01em}
+  .brand .logo{display:block;flex-shrink:0}
+  .brand .dot{width:13px;height:13px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#7ff5e9,var(--cyan));box-shadow:0 0 14px var(--cyan);}
+  .nav-links{display:flex;gap:26px;font-size:14px}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  .hero{text-align:center;padding:clamp(48px,9vw,104px) 0 clamp(36px,6vw,64px)}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:7px 16px;margin-bottom:26px;}
+  .tag .pip{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.025em;font-size:clamp(38px,7.5vw,76px);line-height:1.0;margin-bottom:22px;}
+  h1 em{font-style:normal;font-weight:900;color:var(--amber);}
+  .hero p{color:var(--muted);font-size:clamp(16px,2.1vw,19px);max-width:580px;margin:0 auto 30px}
+  .hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:11px;padding:13px 26px;cursor:pointer;
+    text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s,color .2s;border:1px solid transparent;}
+  .btn-primary{background:var(--cyan);color:#042622}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--cyan)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  section{padding:clamp(40px,7vw,80px) 0}
+  .sec-head{text-align:center;max-width:600px;margin:0 auto clamp(34px,5vw,52px)}
+  .sec-eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:14px}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,4vw,40px);line-height:1.1;letter-spacing:-.02em;margin-bottom:12px}
+  .sec-head p{color:var(--muted);font-size:16px}
+
+  .analyzer{scroll-margin-top:30px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:var(--r);padding:clamp(22px,3vw,34px);box-shadow:0 40px 80px -40px rgba(0,0,0,.8);}
+  .field-label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:500;margin-bottom:10px}
+  textarea{width:100%;min-height:190px;resize:vertical;background:var(--bg);color:var(--paper);border:1px solid var(--line);
+    border-radius:12px;padding:16px;font-family:inherit;font-size:15px;line-height:1.7;transition:border-color .2s,box-shadow .2s;}
+  textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(63,224,208,.12)}
+  textarea::placeholder{color:#46556f}
+  .ctl{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px;flex-wrap:wrap}
+  .count{font-size:12px;color:var(--muted)}
+
+  .result{display:none;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+  .result.show{display:block;animation:rise .55s cubic-bezier(.16,1,.3,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .verdict-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:center}
+  @media(max-width:600px){.verdict-grid{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+  .gauge-stage{perspective:1100px}
+  .gauge{width:200px;height:200px;position:relative;transform-style:preserve-3d;transform:rotateX(10deg);animation:bob 7s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:rotateX(10deg) rotateY(-5deg)}50%{transform:rotateX(10deg) rotateY(5deg)}}
+  .gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .ring-bg{fill:none;stroke:var(--line);stroke-width:3}
+  .ring-track{fill:none;stroke:#16223a;stroke-width:9}
+  .ring-fill{fill:none;stroke-width:9;stroke-linecap:round;
+    transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1),stroke 1.4s;filter:drop-shadow(0 0 6px currentColor);}
+  .gauge .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateZ(28px)}
+  .gauge .pct{font-family:'Fraunces',serif;font-weight:900;font-size:46px;line-height:1}
+  .gauge .pct-sub{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+
+  .verdict-text h3{font-family:'Fraunces',serif;font-weight:600;font-size:24px;margin-bottom:8px}
+  .verdict-text p{color:var(--muted);font-size:14.5px;max-width:420px}
+  .conf{display:inline-block;margin-top:12px;font-size:12px;color:var(--amber);
+    background:rgba(242,179,74,.1);border:1px solid rgba(242,179,74,.22);border-radius:8px;padding:5px 11px}
+
+  .signals{display:grid;gap:11px;margin-top:30px}
+  .signal{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+  .signal-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .signal-name{font-size:13.5px;font-weight:600}
+  .signal-val{font-size:12.5px;color:var(--muted);text-align:right}
+  .bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:3px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+
+  .disclaimer{margin-top:26px;padding:16px 18px;background:rgba(242,179,74,.06);
+    border:1px solid rgba(242,179,74,.22);border-radius:11px;font-size:13px;color:#e8d2a4;line-height:1.6}
+  .disclaimer strong{color:var(--amber)}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .step .num{font-family:'Fraunces',serif;font-size:14px;color:var(--cyan);font-weight:600;margin-bottom:14px}
+  .step h4{font-size:16px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:14px}
+
+  .sig-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.sig-list{grid-template-columns:1fr}}
+  .sig-card{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:20px 22px}
+  .sig-card h4{font-size:15.5px;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .sig-card h4 .mk{width:8px;height:8px;border-radius:2px;background:var(--cyan)}
+  .sig-card p{color:var(--muted);font-size:13.5px}
+
+  .honesty{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:clamp(26px,4vw,44px)}
+  .honesty h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.5vw,34px);margin-bottom:18px;letter-spacing:-.02em}
+  .honesty ul{list-style:none;display:grid;gap:14px}
+  .honesty li{display:flex;gap:13px;color:var(--muted);font-size:15px}
+  .honesty li b{color:var(--paper);font-weight:600}
+  .honesty li .chk{flex-shrink:0;width:20px;height:20px;border-radius:6px;background:rgba(63,224,208,.12);
+    border:1px solid var(--cyan);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:12px;margin-top:2px}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer .brand{justify-content:center;margin-bottom:12px;color:var(--paper)}
+  footer .fine{max-width:480px;margin:0 auto;font-size:12px;line-height:1.6}
+  .foot-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+  .foot-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .2s}
+  .foot-links a:hover{color:var(--cyan)}
+
+  @media(prefers-reduced-motion:reduce){.gauge{animation:none}.result.show{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz1" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz1)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</div>
+    <div class="nav-links">
+      <a href="#analyzer">Analiz</a>
+      <a href="#how">Nasıl çalışır</a>
+      <a href="#signals">Sinyaller</a>
+      <a href="blog.html">Blog</a>
+      <a href="#honesty">Dürüstlük</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="tag"><span class="pip"></span> Türkçe metin analizi</span>
+    <h1>Bir metinde ne kadar<br><em>yapay zeka etkisi</em> var?</h1>
+    <p>Metni yapıştır, dilsel sinyalleri ölçelim. Kesin hüküm vermeyiz — size dürüst, açıklanabilir bir tahmin sunarız.</p>
+    <div class="hero-cta">
+      <a href="#analyzer" class="btn btn-primary">Metni analiz et</a>
+      <a href="#how" class="btn btn-ghost">Nasıl çalışır?</a>
+    </div>
+  </header>
+
+  <section class="analyzer" id="analyzer">
+    <div class="card">
+      <div class="field-label"><span>Analiz edilecek metin</span><span class="count" id="count">0 kelime</span></div>
+      <textarea id="txt" placeholder="Metni buraya yapıştırın… En sağlıklı sonuç için 80 kelime ve üzeri önerilir."></textarea>
+      <div class="ctl">
+        <span class="count" style="color:#46556f">Metniniz kaydedilmez · analiz tarayıcınızda yapılır</span>
+        <button class="btn btn-primary" id="go" disabled>Analiz et</button>
+      </div>
+
+      <div class="result" id="result">
+        <div class="verdict-grid">
+          <div class="gauge-stage">
+            <div class="gauge">
+              <svg viewBox="0 0 200 200">
+                <circle class="ring-bg" cx="100" cy="100" r="92"></circle>
+                <circle class="ring-track" cx="100" cy="100" r="78"></circle>
+                <circle class="ring-fill" id="fill" cx="100" cy="100" r="78" stroke-dasharray="490" stroke-dashoffset="490"></circle>
+              </svg>
+              <div class="center">
+                <div class="pct" id="pct">0%</div>
+                <div class="pct-sub">AI etki sinyali</div>
+              </div>
+            </div>
+          </div>
+          <div class="verdict-text">
+            <h3 id="verdict">—</h3>
+            <p id="verdictSub"></p>
+            <span class="conf" id="conf" style="display:none"></span>
+          </div>
+        </div>
+
+        <div class="signals" id="signals"></div>
+
+        <div class="disclaimer">
+          <strong>Bunu bilmeniz önemli:</strong> Bu skor bir <strong>tahmindir, kesin kanıt değildir.</strong>
+          Hiçbir araç bir metnin yapay zekâ tarafından yazıldığını kesin olarak söyleyemez; düzenli yazan bir
+          insan da bu sinyalleri tetikleyebilir. Bu sonucu birini suçlamak için tek başına kullanmayın.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Nasıl çalışır</div>
+      <h2>Sihir yok, ölçüm var</h2>
+      <p>Metni gizemli bir kara kutuya atmıyoruz. Ölçülebilir dilsel özelliklere bakıp her birini size gösteriyoruz.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Metni yapıştır</h4><p>Makale, ödev, blog yazısı, sosyal medya gönderisi — herhangi bir Türkçe metin.</p></div>
+      <div class="step"><div class="num">02</div><h4>Sinyalleri ölçeriz</h4><p>Cümle ritmi, kelime çeşitliliği, kalıp ifadeler ve kişisel iz gibi ölçülebilir izleri tarar.</p></div>
+      <div class="step"><div class="num">03</div><h4>Açıklanabilir sonuç</h4><p>Tek bir skor değil — o skoru oluşturan her sinyali ayrı ayrı, güven düzeyiyle birlikte görürsünüz.</p></div>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Baktığımız sinyaller</div>
+      <h2>Dört dilsel iz</h2>
+      <p>Her biri tek başına yanıltıcı olabilir; birlikte bir resim oluştururlar.</p>
+    </div>
+    <div class="sig-list">
+      <div class="sig-card"><h4><span class="mk"></span>Cümle homojenliği</h4><p>İnsan yazısı cümle uzunluklarında dalgalanır; yapay zeka metni daha tekdüze bir ritim taşıma eğilimindedir.</p></div>
+      <div class="sig-card"><h4><span class="mk"></span>Kelime tekdüzeliği</h4><p>Kelime çeşitliliğinin beklenenden düşük olması, kalıplaşmış üretim sinyali olabilir.</p></div>
+      <div class="sig-card"><h4><span class="mk"></span>Kalıp ifade yoğunluğu</h4><p>"Sonuç olarak", "günümüzde", "dikkat etmek gerekir" gibi geçiş kalıplarının sıklığı.</p></div>
+      <div class="sig-card"><h4><span class="mk"></span>Kişisel iz yokluğu</h4><p>Deneyim, duygu, özgün örnek ve birinci tekil anlatımın eksikliği makine metninde sık görülür.</p></div>
+    </div>
+  </section>
+
+  <section id="honesty">
+    <div class="honesty">
+      <h2>Sınırlarımızı saklamıyoruz</h2>
+      <ul>
+        <li><span class="chk">✓</span><span><b>Bu bir tahmindir, kanıt değildir.</b> Skorumuzu hiçbir zaman birini suçlamak için tek delil olarak kullanmayın.</span></li>
+        <li><span class="chk">✓</span><span><b>Türkçe zordur.</b> Sade ve kalıplı insan metinleri yanlışlıkla yüksek skor alabilir — bunu açıkça söyleriz.</span></li>
+        <li><span class="chk">✓</span><span><b>Metniniz kaydedilmez.</b> Analiz tarayıcınızda yapılır; içeriğiniz bir sunucuda saklanmaz.</span></li>
+        <li><span class="chk">✓</span><span><b>Kişiyi değil, metni değerlendiririz.</b> Yargımız metnin dilsel özellikleri üzerinedir, yazarın kim olduğu üzerine değil.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz2" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz2)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</div>
+    <div class="foot-links">
+      <a href="blog.html">Blog</a>
+      <a href="yasal.html#gizlilik">Gizlilik</a>
+      <a href="yasal.html#kullanim">Kullanım Şartları</a>
+      <a href="yasal.html#kvkk">KVKK</a>
+      <a href="yasal.html#sorumluluk">Sorumluluk Reddi</a>
+      <a href="mailto:dreamdosima08@gmail.com">İletişim</a>
+    </div>
+    <p class="fine">Dürüst, sınırlarını bilen bir Türkçe metin analiz aracı. Sonuçlar tahmini sinyallerdir, kesin hüküm değildir. · dreamdosima08@gmail.com</p>
+  </footer>
+
+</div>
+
+<script>
+const txt=document.getElementById('txt'),go=document.getElementById('go'),count=document.getElementById('count');
+const words=s=>s.trim().split(/\s+/).filter(Boolean);
+const clamp=n=>Math.max(0,Math.min(1,n));
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const colorFor=p=>p<40?css('--cyan'):p<70?css('--amber'):css('--coral');
+
+txt.addEventListener('input',()=>{const w=words(txt.value);count.textContent=w.length+' kelime';go.disabled=w.length<8;});
+
+function analyze(text){
+  const w=words(text);
+  const sentences=text.split(/[.!?\u2026]+/).map(s=>s.trim()).filter(Boolean);
+  const lens=sentences.map(s=>words(s).length).filter(n=>n>0);
+  const mean=lens.reduce((a,b)=>a+b,0)/(lens.length||1);
+  const variance=lens.reduce((a,b)=>a+(b-mean)**2,0)/(lens.length||1);
+  const cv=mean?Math.sqrt(variance)/mean:0;
+  const homogeneity=clamp(1-cv*1.4);
+  const lower=w.map(x=>x.toLowerCase().replace(/[^a-z\u00e7\u011f\u0131\u00f6\u015f\u00fc]/gi,''));
+  const ttr=new Set(lower).size/(w.length||1);
+  const repetition=clamp((0.62-ttr)*2.2);
+  const cliches=['\u00f6nemlidir','dikkat etmek gerekir','sonu\u00e7 olarak','\u00f6zetle','bununla birlikte','ayr\u0131ca','genel olarak','unutmamak gerekir','bu ba\u011flamda','g\u00f6z \u00f6n\u00fcnde bulundur','her ge\u00e7en g\u00fcn','g\u00fcn\u00fcm\u00fczde','s\u00f6z konusu','dolay\u0131s\u0131yla'];
+  const t=' '+text.toLowerCase()+' ';let hits=0;cliches.forEach(c=>{if(t.includes(c))hits++;});
+  const cliche=clamp(hits/6);
+  const personal=['ben ','bence','bana g\u00f6re','hissett','ba\u015f\u0131ma','ge\u00e7en g\u00fcn','hat\u0131rl\u0131yorum','kendi','ya\u015fad\u0131\u011f\u0131m','g\u00f6zlemledi'];
+  let pH=0;personal.forEach(p=>{if(t.includes(p))pH++;});
+  const impersonal=clamp(1-pH/3);
+  const signals=[
+    {name:'C\u00fcmle homojenli\u011fi',val:homogeneity,desc:'c\u00fcmle uzunluklar\u0131 ne kadar benzer'},
+    {name:'Kelime tekd\u00fczeli\u011fi',val:repetition,desc:'kelime \u00e7e\u015fitlili\u011finin d\u00fc\u015f\u00fckl\u00fc\u011f\u00fc'},
+    {name:'Kal\u0131p ifade yo\u011funlu\u011fu',val:cliche,desc:'s\u0131k g\u00f6r\u00fclen ge\u00e7i\u015f kal\u0131plar\u0131'},
+    {name:'Ki\u015fisel iz yoklu\u011fu',val:impersonal,desc:'deneyim ve \u00f6zg\u00fcnl\u00fck eksikli\u011fi'},
+  ];
+  const score=clamp(homogeneity*0.30+repetition*0.22+cliche*0.26+impersonal*0.22);
+  return{score,signals,lowConfidence:w.length<40};
+}
+function verdictFor(p){
+  if(p<35)return['\u0130nsan a\u011f\u0131rl\u0131kl\u0131 g\u00f6r\u00fcn\u00fcyor','Bu metin daha \u00e7ok insan yaz\u0131m\u0131na \u00f6zg\u00fc dalgalanma ve ki\u015filik ta\u015f\u0131yor. Yine de bu kesin de\u011fildir.'];
+  if(p<65)return['Kar\u0131\u015f\u0131k sinyaller','Metin hem insan hem yapay zeka \u00f6zellikleri ta\u015f\u0131yabilir \u2014 \u00f6rne\u011fin AI ile yaz\u0131l\u0131p insan taraf\u0131ndan d\u00fczenlenmi\u015f. Net bir ay\u0131r\u0131m yok.'];
+  return['Yapay zeka etkisi g\u00fc\u00e7l\u00fc g\u00f6r\u00fcn\u00fcyor','Dilsel sinyaller makine metnine benziyor. Yine de bu bir tahmindir; iyi yap\u0131land\u0131r\u0131lm\u0131\u015f insan metni de bu sinyalleri verebilir.'];
+}
+go.addEventListener('click',()=>{
+  const r=analyze(txt.value),p=Math.round(r.score*100);
+  const result=document.getElementById('result');result.classList.add('show');
+  const circ=490,fill=document.getElementById('fill'),col=colorFor(p);
+  setTimeout(()=>{fill.style.strokeDashoffset=circ-(circ*p/100);fill.style.stroke=col;fill.style.color=col;},60);
+  const pctEl=document.getElementById('pct');let cur=0;
+  (function step(){cur+=Math.ceil((p-cur)/8)||1;if(cur>=p)cur=p;pctEl.textContent=cur+'%';pctEl.style.color=col;if(cur<p)requestAnimationFrame(step);})();
+  const v=verdictFor(p);
+  document.getElementById('verdict').textContent=v[0];
+  document.getElementById('verdictSub').textContent=v[1];
+  const conf=document.getElementById('conf');
+  if(r.lowConfidence){conf.style.display='inline-block';conf.textContent='\u26a0 Metin k\u0131sa \u2014 g\u00fcven d\u00fc\u015f\u00fck';}else{conf.style.display='none';}
+  const box=document.getElementById('signals');box.innerHTML='';
+  r.signals.forEach((s,i)=>{
+    const pc=Math.round(s.val*100),el=document.createElement('div');el.className='signal';
+    el.innerHTML='<div class="signal-top"><span class="signal-name">'+s.name+'</span><span class="signal-val">'+pc+'% \u00b7 '+s.desc+'</span></div><div class="bar"><i></i></div>';
+    box.appendChild(el);const bar=el.querySelector('.bar i');
+    setTimeout(()=>{bar.style.width=pc+'%';bar.style.background=colorFor(pc);},220+i*120);
+  });
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>
