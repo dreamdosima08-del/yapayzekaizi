@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Artık Metinlere Gizli Filigran Ekliyor: Bu Ne Demek? (2026)</title>
+<meta name="description" content="Claude (Anthropic) ürettiği metinlere görünmez filigran eklemeye başladı. Peki bu filigran nedir, nasıl çalışır, kopyalayınca kalır mı ve sizin için ne anlama geliyor? Dürüst rehber.">
+<meta name="keywords" content="claude filigran, yapay zeka filigran, claude watermark, ai metin işareti, chatgpt filigran, yapay zeka tespiti filigran, claude metin işareti">
+<link rel="canonical" href="https://yapayzekaizi.com/blog-claude-filigran-nedir.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Artık Metinlere Gizli Filigran Ekliyor: Bu Ne Demek?">
+<meta property="og:description" content="Claude'un görünmez metin filigranı nedir, nasıl çalışır, kopyalayınca kalır mı? Dürüst ve açıklayıcı rehber.">
+<meta property="og:image" content="https://yapayzekaizi.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Claude filigranı nedir?","acceptedAnswer":{"@type":"Answer","text":"Claude filigranı, Anthropic'in ürettiği metinlere gömdüğü, insan gözüyle görülemeyen ama makineler tarafından okunabilen gizli bir işarettir. 2 Ağustos 2026 sonrası çıkan Claude modellerinde otomatik olarak eklenir ve AB Yapay Zeka Yasası'na uyum amacı taşır."}},
+    {"@type":"Question","name":"Filigran kopyala-yapıştır yapınca kaybolur mu?","acceptedAnswer":{"@type":"Answer","text":"Hayır, filigran metnin kendisine işlendiği için kopyala-yapıştır işleminde ve yüzeysel düzenlemelerde korunur. Ancak ağır yeniden yazım, çeviri veya çok kısa metinlerde kaybolabilir."}},
+    {"@type":"Question","name":"Filigranın olmaması metnin insan yazdığı anlamına gelir mi?","acceptedAnswer":{"@type":"Answer","text":"Hayır. Anthropic bunu açıkça belirtiyor: filigran yokluğu, metnin insan tarafından yazıldığının kanıtı değildir. Başka bir yapay zeka kullanılmış, filigran silinmiş veya metin kısa olabilir."}},
+    {"@type":"Question","name":"İnsan yazısı Claude filigranı taşıyabilir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet. İnsanın yazdığı bir metni Claude'a sadece düzelttirmek, çevirtmek veya biçimlendirtmek bile çıktıya filigran ekleyebilir. Bu, önemli bir yanlış pozitif kaynağıdır."}}
+  ]
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
+  :root{--bg:#070b14;--bg-2:#0b111e;--panel:#101829;--panel-2:#0d1421;--line:#1e2a42;--paper:#e9eef7;--muted:#7e8eae;--cyan:#3fe0d0;--amber:#f2b34a;--coral:#f0685c;--r:16px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--paper);line-height:1.78;background:linear-gradient(180deg,var(--bg),var(--bg-2));min-height:100vh}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;max-width:1040px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;text-decoration:none;color:var(--paper)}
+  .brand .logo{display:block;flex-shrink:0}
+  .nav-links{display:flex;gap:26px;font-size:14px}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  @media(max-width:640px){.nav-links{display:none}}
+  article{padding:clamp(30px,6vw,60px) 0 40px}
+  .crumb{font-size:13px;color:var(--muted);margin-bottom:22px}
+  .crumb a{color:var(--cyan);text-decoration:none}
+  .cat{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:16px}
+  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(30px,5.2vw,50px);line-height:1.06;margin-bottom:18px}
+  .lede{font-size:clamp(17px,2.3vw,20px);color:#c8d2e6;margin-bottom:22px}
+  .byline{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  article h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.6vw,32px);letter-spacing:-.01em;margin:42px 0 16px;line-height:1.15}
+  article p{font-size:16.5px;color:#c3cde0;margin-bottom:18px}
+  article strong{color:var(--paper)}
+  article ul{margin:0 0 20px;list-style:none}
+  article li{font-size:16px;color:#c3cde0;padding-left:24px;position:relative;margin-bottom:11px}
+  article li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:2px;background:var(--cyan)}
+  .pull{border-left:3px solid var(--amber);padding:6px 0 6px 22px;margin:28px 0;font-family:'Fraunces',serif;font-size:22px;line-height:1.4;color:#f0e6cf;font-weight:500}
+  .keybox{background:rgba(63,224,208,.06);border:1px solid rgba(63,224,208,.22);border-radius:var(--r);padding:22px 24px;margin:28px 0}
+  .keybox h4{color:var(--cyan);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+  .keybox p{margin-bottom:8px;font-size:15.5px}
+  .keybox p:last-child{margin-bottom:0}
+  .warn{background:rgba(240,104,92,.07);border:1px solid rgba(240,104,92,.28);border-radius:var(--r);padding:20px 22px;margin:26px 0}
+  .warn p{color:#f3c0ba;margin:0;font-size:15px}
+  .warn strong{color:var(--coral)}
+  .cta{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:30px;margin:46px 0 20px;text-align:center}
+  .cta h3{font-family:'Fraunces',serif;font-size:24px;margin-bottom:10px}
+  .cta p{color:var(--muted);margin-bottom:20px;font-size:15px}
+  .btn{display:inline-block;background:var(--cyan);color:#042622;font-weight:600;padding:13px 28px;border-radius:11px;text-decoration:none;transition:transform .15s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--cyan)}
+  .related{margin-top:40px;padding-top:26px;border-top:1px solid var(--line)}
+  .related h3{font-family:'Fraunces',serif;font-size:20px;margin-bottom:16px;color:var(--paper)}
+  .related a{display:block;color:var(--cyan);text-decoration:none;font-size:15.5px;padding:10px 0;border-bottom:1px solid var(--line);transition:color .2s,padding-left .2s}
+  .related a:hover{color:#7ff5e9;padding-left:8px}
+  .related a::before{content:"→ ";color:var(--amber)}
+  .faq h3{font-size:18px;margin:22px 0 8px;color:var(--paper)}
+  .faq p{font-size:15.5px}
+  .src{font-size:13px;color:#56678a;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+  .foot-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .foot-links a{color:var(--muted);text-decoration:none;font-size:13px}
+  .foot-links a:hover{color:var(--cyan)}
+</style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="index.html"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</a>
+    <div class="nav-links">
+      <a href="index.html#analyzer">Analiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="yasal.html">Yasal</a>
+    </div>
+  </nav>
+
+<div class="wrap">
+<article>
+  <div class="crumb"><a href="blog.html">Blog</a> · Güncel</div>
+  <div class="cat">Güncel · Ağustos 2026</div>
+  <h1>Claude artık metinlere gizli filigran ekliyor: Bu ne demek?</h1>
+  <p class="lede">Ağustos 2026'da Anthropic, Claude'un ürettiği her metne görünmez bir "filigran" gömmeye başladı. Peki bu tam olarak nedir, sizi nasıl etkiler, ve en önemlisi — yapay zeka tespitini gerçekten çözüyor mu? Sakin ve dürüst bir açıklama.</p>
+  <div class="byline">YapayZekaİzi ekibi · Güncelleme: Ağustos 2026 · 6 dakikalık okuma</div>
+
+  <p>Kısa özet: <strong>2 Ağustos 2026'dan itibaren, Claude ile üretilen metinlerin içine gözle görülemeyen, makinelerin okuyabildiği gizli bir işaret gömülüyor.</strong> Buna "filigran" (watermark) deniyor. Amaç, bir metnin Claude tarafından üretilip üretilmediğini sonradan anlaşılabilir kılmak.</p>
+
+  <p>Bu kulağa "artık yapay zeka tespiti çözüldü" gibi gelebilir. Ama gerçek çok daha incelikli — ve bu inceliği anlamak, hem içerik üreticiler hem öğrenciler hem de meraklılar için önemli.</p>
+
+  <h2>Filigran tam olarak nedir?</h2>
+  <p>Görsellerdeki filigranı bilirsiniz — köşede duran yarı saydam bir logo. Metin filigranı ise tamamen farklı: <strong>gözle görülmez.</strong> Anthropic, ürettiği kelimelerin seçiliş ve diziliş biçimine, insanın fark edemeyeceği ama bir algoritmanın yakalayabileceği istatistiksel bir desen gömüyor. Metnin anlamı, kalitesi veya okunabilirliği değişmiyor; sadece görünmez bir "imza" taşıyor.</p>
+
+  <p>Bu adım, Avrupa Birliği'nin Yapay Zeka Yasası'nın şeffaflık kurallarına uyum için atıldı — ama Anthropic bunu sadece Avrupa'da değil, <strong>dünya genelinde</strong> uyguluyor. Yani Türkiye'den kullansanız da Claude çıktınız bu işareti taşıyacak.</p>
+
+  <h2>En şaşırtıcı kısım: kopyalayınca da kalıyor</h2>
+  <p>Filigranın en dikkat çekici özelliği şu: metni kopyalayıp başka bir yere yapıştırdığınızda işaret <strong>gitmiyor.</strong> Hatta metinde yüzeysel düzenlemeler yapsanız bile büyük ölçüde korunuyor. Çünkü işaret, metnin "dokusuna" işlenmiş durumda, dışına yapıştırılmış bir etiket değil.</p>
+
+  <div class="pull">Filigran metnin dışına yapıştırılmış bir etiket değil — kelimelerin dokusuna işlenmiş görünmez bir desen.</div>
+
+  <h2>Ama işte kritik sınırlar — bu bir "sihirli çözüm" değil</h2>
+  <p>Burası çok önemli, çünkü haberlerin çoğu bu kısmı atlıyor. Anthropic'in kendisi filigranın <strong>kesin bir kanıt olmadığını</strong> açıkça söylüyor. İşte nedenleri:</p>
+  <ul>
+    <li><strong>Ağır düzenleme siler:</strong> Metni baştan yeniden yazarsanız veya başka dile çevirirseniz, filigran kaybolabilir.</li>
+    <li><strong>Kısa metinlerde çalışmaz:</strong> Çok kısa metinlerde, işaretin oluşması için yeterli materyal olmaz.</li>
+    <li><strong>Filigran yokluğu bir şey kanıtlamaz:</strong> Bir metinde filigran olmaması, onun insan yazdığı anlamına gelmez — başka bir yapay zeka (ChatGPT, Gemini) kullanılmış olabilir, ya da işaret silinmiş olabilir.</li>
+    <li><strong>Sadece Claude'u kapsar:</strong> Bu filigran yalnızca Claude içindir. Diğer yapay zeka araçlarının metinlerini yakalamaz.</li>
+  </ul>
+
+  <div class="warn">
+    <p><strong>En önemli tuzak:</strong> İnsanın yazdığı bir metni Claude'a sadece <strong>düzelttirmek, çevirtmek veya biçimlendirtmek</strong> bile çıktıya filigran ekleyebilir. Yani kendi yazdığınız bir yazıyı Claude'a "şunun imlasını düzelt" dediğinizde, sonuç "yapay zeka üretimi" işareti taşıyabilir. Bu, ciddi bir yanlış pozitif kaynağıdır.</p>
+  </div>
+
+  <p>Fark ettiniz mi? Bu tam da bizim aylardır anlattığımız şey. Filigran teknolojisinin en gelişmiş hali bile, "insan mı AI mı" sorusunu kesin çözemiyor. Anthropic'in kendisi bunu itiraf ediyor.</p>
+
+  <h2>Peki bu YapayZekaİzi gibi araçlar için ne anlama geliyor?</h2>
+  <p>Filigran, tespit dünyasına yeni bir <em>katman</em> ekliyor ama mevcut yöntemlerin yerini almıyor. Gelecekte ideal bir kontrol muhtemelen iki şeyi birleştirecek:</p>
+  <ul>
+    <li><strong>Filigran kontrolü:</strong> "Bu metinde Claude'un imzası var mı?" — varsa güçlü bir sinyal.</li>
+    <li><strong>Dilsel analiz:</strong> "Filigran yok ama metin ne kadar makine gibi görünüyor?" — çünkü çoğu metin filigran taşımayacak (diğer AI'ler, silinmiş işaretler, düzenlenmiş metinler).</li>
+  </ul>
+  <p>Yani filigran, dilsel analizin <strong>rakibi değil, tamamlayıcısı.</strong> İkisi birlikte, tek başına her birinden daha güçlü olur. Özellikle Türkçe içerikte, çoğu metin hâlâ filigransız olacağı için dilsel analiz uzun süre değerini koruyacak.</p>
+
+  <div class="keybox">
+    <h4>Özetle hatırla</h4>
+    <p>→ Claude metinleri artık <strong>görünmez filigran</strong> taşıyor (Ağustos 2026).</p>
+    <p>→ Kopyala-yapıştırda <strong>kalır</strong>, ama ağır düzenlemede <strong>silinir.</strong></p>
+    <p>→ Filigran <strong>yokluğu</strong>, insan yazdığını kanıtlamaz.</p>
+    <p>→ İnsan yazısını Claude'a düzelttirmek bile <strong>filigran ekleyebilir.</strong></p>
+    <p>→ Sadece Claude'u kapsar; diğer AI'leri <strong>kapsamaz.</strong></p>
+  </div>
+
+  <h2>Sonuç: dürüstlük her zamankinden değerli</h2>
+  <p>Bu gelişme aslında güzel bir şeyi doğruluyor: yapay zeka tespiti, hiçbir zaman tek bir "kesin" yöntemle çözülmeyecek. Dünyanın en büyük yapay zeka şirketlerinden biri, kendi filigranı için bile "bu kesin kanıt değildir" diyor. Bu, bizim en başından beri savunduğumuz dürüstlüğün ne kadar doğru olduğunu gösteriyor.</p>
+  <p>Bir metni değerlendirirken tek bir sinyale — ne filigrana, ne dilsel skora — körü körüne güvenmeyin. Sinyalleri birlikte okuyun, bağlamı düşünün, ve hiçbir aracı bir insanı suçlamak için tek dayanak yapmayın.</p>
+
+  <div class="cta">
+    <h3>Metnini dürüst, açıklanabilir bir analizden geçir</h3>
+    <p>Türkçe için ücretsiz dilsel analiz. Kesin hüküm değil — şeffaf sinyaller ve her birinin açıklaması.</p>
+    <a class="btn" href="index.html#analyzer">Metni analiz et</a>
+  </div>
+
+  <div class="faq">
+    <h2>Sık sorulan sorular</h2>
+    <h3>Claude filigranını ben görebilir miyim?</h3>
+    <p>Hayır. Filigran insan gözüyle görülemez; yalnızca makineler tarafından okunabilir. Metnin görünüşünü veya anlamını hiç değiştirmez.</p>
+    <h3>Filigranı silmek mümkün mü?</h3>
+    <p>Ağır yeniden yazım, farklı dile çeviri veya metni büyük ölçüde değiştirmek filigranı bozabilir. Ama basit kopyala-yapıştır veya küçük düzeltmeler onu korur.</p>
+    <h3>ChatGPT veya Gemini de filigran ekliyor mu?</h3>
+    <p>Şu an için metin tarafında bu kapsamda değiller; bazı sağlayıcılar görsel ve ses için çalışıyor. Bu yüzden filigran kontrolü tek başına yeterli değildir — dilsel analiz hâlâ gereklidir.</p>
+  </div>
+
+  <div class="related">
+    <h3>İlgili yazılar</h3>
+    <a href="blog-ai-tespit-mumkun-mu.html">Yapay zeka tespiti gerçekten mümkün mü?</a>
+    <a href="blog-turnitin-turkce-yapay-zeka.html">Turnitin Türkçe yapay zekayı yakalar mı?</a>
+    <a href="blog-turkce-neden-zor.html">Türkçe'de tespit neden daha zor?</a>
+  </div>
+
+  <div class="src">
+    Kaynaklar: Anthropic Yardım Merkezi — "How Claude marks AI-generated content" (Ağustos 2026); TechCrunch, Axios, Fortune ve Anadolu Ajansı filigran haberleri (11 Ağustos 2026); AB Yapay Zeka Yasası Madde 50. Bu yazı bilgilendirme amaçlıdır.
+  </div>
+</article>
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="blog.html">Blog</a>
+    <a href="blog-turnitin-turkce-yapay-zeka.html">Turnitin Türkçe</a>
+    <a href="mailto:dreamdosima08@gmail.com">İletişim</a>
+  </div>
+  <p>YapayZekaİzi · dreamdosima08@gmail.com</p>
+</footer>
+</body>
+</html>
