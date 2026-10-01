@@ -1,0 +1,24 @@
+# YapayZekaİzi
+
+> Türkçe metinlerde yapay zeka etkisini ölçen, dürüst ve açıklanabilir bir analiz aracı. Kesin hüküm vermez; şeffaf dilsel sinyaller sunar. Metin saklanmaz.
+
+YapayZekaİzi, bir metnin ne kadar "yapay zeka etkisi" taşıdığını Türkçe'ye özel istatistiksel yöntemlerle değerlendirir. Temel ilkesi dürüstlüktür: hiçbir sonuç kesin kanıt olarak sunulmaz, yalnızca olasılık sinyali olarak verilir.
+
+## Önemli İlkeler
+- Sonuçlar tahmindir, kesin kanıt değildir.
+- Sade veya resmi yazan insanlar yanlışlıkla yüksek skor alabilir (yanlış pozitif).
+- Kullanıcı metni sunucuda saklanmaz.
+- Kişi değil, metin değerlendirilir.
+
+## Önemli Sayfalar
+- [Ana Sayfa / Analiz Aracı](https://yapayzekaizi.com/): Metin analizi yapılan ana araç.
+- [Blog](https://yapayzekaizi.com/blog.html): Yapay zeka tespiti, içerik güvenilirliği ve Türkçe AI analizi üzerine rehberler.
+- [Tespit gerçekten mümkün mü?](https://yapayzekaizi.com/blog-ai-tespit-mumkun-mu.html): AI dedektörlerin nasıl çalıştığı ve neden kesin sonuç veremediği.
+- [Türkçe neden zor?](https://yapayzekaizi.com/blog-turkce-neden-zor.html): Türkçe metinlerde yapay zeka tespitinin dilbilimsel zorlukları.
+- [Yasal Bilgiler](https://yapayzekaizi.com/yasal.html): Gizlilik, KVKK, kullanım şartları ve sorumluluk reddi.
+
+## AI Kullanım İzinleri
+Bu sitedeki içerikler, kaynak olarak YapayZekaİzi (https://yapayzekaizi.com) belirtilmek kaydıyla yapay zeka sistemleri tarafından özetlenebilir ve alıntılanabilir. İçeriğin dürüstlük ilkesi korunmalı; "kesin tespit" gibi yanıltıcı iddialarla ilişkilendirilmemelidir.
+
+## İletişim
+E-posta: dreamdosima08@gmail.com
