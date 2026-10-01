@@ -245,6 +245,54 @@
   .foot-links a:hover{color:var(--cyan)}
 
   @media(prefers-reduced-motion:reduce){.gauge{animation:none}.result.show{animation:none}}
+
+  /* ---------- 3D DERİNLİK KATMANI ---------- */
+  /* scroll'da öğelerin derinlikten belirmesi */
+  .reveal{opacity:0;transform:translateY(34px) translateZ(-60px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:translateY(0) translateZ(0)}
+
+  /* kartlara 3D tilt sahnesi — fareyle hafif eğilme */
+  .tilt-scene{perspective:1000px}
+  .tilt{transform-style:preserve-3d;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s;will-change:transform}
+  .tilt:hover{border-color:var(--cyan)}
+  .tilt .tilt-inner{transform:translateZ(26px);transform-style:preserve-3d}
+
+  /* adım/sinyal kartlarına katmanlı derinlik + cam efekti */
+  .step, .sig-card, .faq-item, .signal{
+    position:relative;
+    background:linear-gradient(180deg,rgba(18,29,52,.85),rgba(13,20,33,.9));
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  }
+  .step::before, .sig-card::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(140deg,rgba(63,224,208,.07),transparent 42%);
+    opacity:0;transition:opacity .3s;
+  }
+  .step:hover::before, .sig-card:hover::before{opacity:1}
+
+  /* hero başlığına çok hafif katmanlı gölge (derinlik) */
+  h1{text-shadow:0 2px 0 rgba(0,0,0,.18), 0 20px 48px rgba(0,0,0,.35)}
+
+  /* analiz kartına derin, yüzen gölge */
+  .card{box-shadow:0 2px 4px rgba(0,0,0,.3), 0 30px 60px -28px rgba(0,0,0,.75), 0 60px 90px -50px rgba(63,224,208,.08)}
+
+  /* gauge'e daha güçlü yüzen zemin gölgesi */
+  .gauge-stage{position:relative}
+  .gauge-stage::after{
+    content:"";position:absolute;left:50%;bottom:-6px;width:140px;height:26px;
+    transform:translateX(-50%);border-radius:50%;
+    background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 70%);
+    filter:blur(6px);z-index:-1;
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .gauge{animation:none}.result.show{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .tilt{transition:none}
+  }
+  @media(hover:none){ /* dokunmatikte tilt'i kapat, titremesin */
+    .tilt{transform:none !important}
+  }
 </style>
 </head>
 <body>
@@ -316,34 +364,31 @@
   </section>
 
   <section id="how">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-eyebrow">Nasıl çalışır</div>
       <h2>Yapay zeka metin analizi nasıl çalışır?</h2>
       <p>Türkçe metin analizi karmaşık görünür ama biz metni gizemli bir kara kutuya atmıyoruz. Ölçülebilir dilsel özelliklere bakıp her birini size gösteriyoruz.</p>
     </div>
-    <div class="steps">
-      <div class="step"><div class="num">01</div><h4>Metni yapıştır</h4><p>Makale, ödev, blog yazısı, sosyal medya gönderisi — herhangi bir Türkçe metin.</p></div>
-      <div class="step"><div class="num">02</div><h4>Sinyalleri ölçeriz</h4><p>Cümle ritmi, kelime çeşitliliği, kalıp ifadeler ve kişisel iz gibi ölçülebilir izleri tarar.</p></div>
-      <div class="step"><div class="num">03</div><h4>Açıklanabilir sonuç</h4><p>Tek bir skor değil — o skoru oluşturan her sinyali ayrı ayrı, güven düzeyiyle birlikte görürsünüz.</p></div>
-    </div>
+    <div class="steps tilt-scene">
+      <div class="step tilt reveal"><div class="tilt-inner"><div class="num">01</div><h4>Metni yapıştır</h4><p>Makale, ödev, blog yazısı, sosyal medya gönderisi — herhangi bir Türkçe metin.</p></div></div><div class="step tilt reveal"><div class="tilt-inner"><div class="num">02</div><h4>Sinyalleri ölçeriz</h4><p>Cümle ritmi, kelime çeşitliliği, kalıp ifadeler ve kişisel iz gibi ölçülebilir izleri tarar.</p></div></div><div class="step tilt reveal"><div class="tilt-inner"><div class="num">03</div><h4>Açıklanabilir sonuç</h4><p>Tek bir skor değil — o skoru oluşturan her sinyali ayrı ayrı, güven düzeyiyle birlikte görürsünüz.</p></div></div></div>
   </section>
 
   <section id="signals">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-eyebrow">Baktığımız sinyaller</div>
       <h2>Yapay zeka tespitinde baktığımız dört sinyal</h2>
       <p>Yapay zeka metin analizinde her sinyal tek başına yanıltıcı olabilir; birlikte bir resim oluştururlar.</p>
     </div>
-    <div class="sig-list">
-      <div class="sig-card"><h4><span class="mk"></span>Cümle homojenliği</h4><p>İnsan yazısı cümle uzunluklarında dalgalanır; yapay zeka metni daha tekdüze bir ritim taşıma eğilimindedir.</p></div>
-      <div class="sig-card"><h4><span class="mk"></span>Kelime tekdüzeliği</h4><p>Kelime çeşitliliğinin beklenenden düşük olması, kalıplaşmış üretim sinyali olabilir.</p></div>
-      <div class="sig-card"><h4><span class="mk"></span>Kalıp ifade yoğunluğu</h4><p>"Sonuç olarak", "günümüzde", "dikkat etmek gerekir" gibi geçiş kalıplarının sıklığı.</p></div>
-      <div class="sig-card"><h4><span class="mk"></span>Kişisel iz yokluğu</h4><p>Deneyim, duygu, özgün örnek ve birinci tekil anlatımın eksikliği makine metninde sık görülür.</p></div>
+    <div class="sig-list tilt-scene">
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Cümle homojenliği</h4><p>İnsan yazısı cümle uzunluklarında dalgalanır; yapay zeka metni daha tekdüze bir ritim taşıma eğilimindedir.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kelime tekdüzeliği</h4><p>Kelime çeşitliliğinin beklenenden düşük olması, kalıplaşmış üretim sinyali olabilir.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kalıp ifade yoğunluğu</h4><p>"Sonuç olarak", "günümüzde", "dikkat etmek gerekir" gibi geçiş kalıplarının sıklığı.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kişisel iz yokluğu</h4><p>Deneyim, duygu, özgün örnek ve birinci tekil anlatımın eksikliği makine metninde sık görülür.</p></div>
     </div>
   </section>
 
   <section id="honesty">
-    <div class="honesty">
+    <div class="honesty reveal">
       <h2>Sınırlarımızı saklamıyoruz</h2>
       <ul>
         <li><span class="chk">✓</span><span><b>Bu bir tahmindir, kanıt değildir.</b> Skorumuzu hiçbir zaman birini suçlamak için tek delil olarak kullanmayın.</span></li>
@@ -356,39 +401,36 @@
 
   <!-- KİMLER KULLANIR -->
   <section id="kimler">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-eyebrow">Kimler için?</div>
       <h2>Kimler yapay zeka metin analizi kullanır?</h2>
       <p>YapayZekaİzi'yi farklı ihtiyaçlarla binlerce kişi kullanabilir. İşte en yaygın kullanım alanları.</p>
     </div>
-    <div class="steps">
-      <div class="step"><div class="num">Öğrenciler</div><h4>Ödev ve tez kontrolü</h4><p>Bir ödevi veya tezi teslim etmeden önce, metnin ne kadar "yapay zeka kokuyor" göründüğünü görün. Sade yazdığınız halde yüksek skor alabileceğinizi de unutmayın — sonuç kesin değildir.</p></div>
-      <div class="step"><div class="num">Eğitmenler</div><h4>Bir fikir edinmek için</h4><p>Bir metnin yapay zeka ile yazılmış olabileceğine dair sinyalleri görün. Ama bunu asla tek başına bir suçlama dayanağı yapmayın; araç bir delil değil, yalnızca bir işarettir.</p></div>
-      <div class="step"><div class="num">İçerik üreticiler</div><h4>SEO ve özgünlük</h4><p>Blog yazısı, makale veya web içeriğinizin ne kadar doğal göründüğünü ölçün. Yapay zeka ile yazıp yayınlamadan önce bir kontrol noktası olarak kullanın.</p></div>
-    </div>
+    <div class="steps tilt-scene">
+      <div class="step tilt reveal"><div class="tilt-inner"><div class="num">Öğrenciler</div><h4>Ödev ve tez kontrolü</h4><p>Bir ödevi veya tezi teslim etmeden önce, metnin ne kadar "yapay zeka kokuyor" göründüğünü görün. Sade yazdığınız halde yüksek skor alabileceğinizi de unutmayın — sonuç kesin değildir.</p></div></div><div class="step tilt reveal"><div class="tilt-inner"><div class="num">Eğitmenler</div><h4>Bir fikir edinmek için</h4><p>Bir metnin yapay zeka ile yazılmış olabileceğine dair sinyalleri görün. Ama bunu asla tek başına bir suçlama dayanağı yapmayın; araç bir delil değil, yalnızca bir işarettir.</p></div></div><div class="step tilt reveal"><div class="tilt-inner"><div class="num">İçerik üreticiler</div><h4>SEO ve özgünlük</h4><p>Blog yazısı, makale veya web içeriğinizin ne kadar doğal göründüğünü ölçün. Yapay zeka ile yazıp yayınlamadan önce bir kontrol noktası olarak kullanın.</p></div></div></div>
   </section>
 
   <!-- SSS -->
   <section id="sss">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="sec-eyebrow">Sık Sorulan Sorular</div>
       <h2>Merak edilenler</h2>
       <p>YapayZekaİzi'nin nasıl çalıştığı ve sınırları hakkında en sık sorulan sorular.</p>
     </div>
     <div class="faq-list">
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <h3>Bir metnin yapay zeka tarafından yazıldığı kesin olarak anlaşılır mı?</h3>
         <p>Hayır. Hiçbir araç bunu kesin olarak söyleyemez — ne bizimki, ne de dünyanın en gelişmiş dedektörleri. YapayZekaİzi size bir olasılık tahmini sunar. Sonuçlar dilsel sinyallerdir; kesin kanıt değildir. İyi yazan bir insan da yapay zeka gibi görünebilir, iyi ayarlanmış bir yapay zeka da insan gibi yazabilir.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <h3>Girdiğim metin kaydediliyor mu?</h3>
         <p>Hayır. Metniniz analiz için işlenir ve skor üretildikten sonra bir sunucuda kalıcı olarak saklanmaz. Gizliliğiniz bizim için önceliklidir; analiz sürecinde içeriğiniz üçüncü taraflarla paylaşılmaz veya satılmaz.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <h3>Sonucu birini suçlamak için kullanabilir miyim?</h3>
         <p>Kesinlikle hayır. Skor bir sinyaldir, bir delil değildir. Özellikle sade, kısa veya resmi/teknik yazan bir insan — hiç yapay zeka kullanmadığı halde — yüksek skor alabilir. Bu sonucu bir öğrenciyi, çalışanı veya herhangi birini suçlamak için tek dayanak olarak kullanmak haksızlığa yol açar.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <h3>Analiz neden özellikle Türkçe için tasarlandı?</h3>
         <p>Çoğu yapay zeka tespit aracı ağırlıklı İngilizce veriyle eğitilmiştir ve Türkçe'de yanılır. YapayZekaİzi'nin motoru, Türkçe'nin sondan eklemeli (aglütinatif) yapısına, kalıp ifadelerine ve cümle ritmine göre tasarlandı. Yine de Türkçe, yapay zeka tespiti için dünyanın en zorlu dillerinden biridir; bu yüzden sonuçları her zaman bir tahmin olarak sunarız.</p>
       </div>
@@ -411,6 +453,32 @@
 </div>
 
 <script>
+/* ---------- 3D derinlik: scroll reveal ---------- */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+  },{threshold:0.12});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ---------- 3D derinlik: fareyle hafif kart eğilmesi (tilt) ---------- */
+(function(){
+  if(window.matchMedia('(hover:none)').matches)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const MAX=7;
+  document.querySelectorAll('.tilt').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-0.5;
+      const py=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform='rotateY('+(px*MAX)+'deg) rotateX('+(-py*MAX)+'deg) translateY(-3px)';
+    });
+    card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+  });
+})();
+
 const txt=document.getElementById('txt'),go=document.getElementById('go'),count=document.getElementById('count');
 const words=s=>s.trim().split(/\s+/).filter(Boolean);
 const clamp=n=>Math.max(0,Math.min(1,n));
