@@ -75,3 +75,7 @@ jobs:
             sleep 5
           done
           echo "::error::Canlı Worker beklenen sürümü ($expected) döndürmedi: $out"; exit 1
+
+      - name: Canlı doğruluk testi
+        if: steps.check.outputs.ready == 'true'
+        run: node worker/smoke-test.mjs https://yapayzekaizi.dreamdosima08.workers.dev
