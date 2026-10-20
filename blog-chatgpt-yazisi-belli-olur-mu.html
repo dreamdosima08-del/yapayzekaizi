@@ -36,7 +36,8 @@
   .nav-links{display:flex;gap:26px;font-size:14px}
   .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
   .nav-links a:hover{color:var(--paper)}
-  @media(max-width:640px){.nav-links{display:none}}
+  @media(max-width:640px){nav{flex-wrap:wrap;row-gap:12px}.nav-links{display:flex;width:100%;gap:18px;overflow-x:auto;white-space:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav-links::-webkit-scrollbar{display:none}}
+  h1,h2,h3{text-wrap:balance}
   article{padding:clamp(30px,6vw,60px) 0 40px}
   .crumb{font-size:13px;color:var(--muted);margin-bottom:22px}
   .crumb a{color:var(--cyan);text-decoration:none}

@@ -141,15 +141,17 @@
   .nav-links{display:flex;gap:26px;font-size:14px}
   .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
   .nav-links a:hover{color:var(--paper)}
-  @media(max-width:640px){.nav-links{display:none}}
+  @media(max-width:640px){nav{flex-wrap:wrap;row-gap:12px}.nav-links{display:flex;width:100%;gap:18px;overflow-x:auto;white-space:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav-links::-webkit-scrollbar{display:none}}
+  h1,h2,h3{text-wrap:balance}
 
-  .hero{text-align:center;padding:clamp(48px,9vw,104px) 0 clamp(36px,6vw,64px)}
+  .hero{text-align:center;padding:clamp(28px,5vw,60px) 0 clamp(16px,2vw,28px)}
+  section.analyzer{padding-top:0}
   .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;
     text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:7px 16px;margin-bottom:26px;}
   .tag .pip{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.025em;font-size:clamp(38px,7.5vw,76px);line-height:1.0;margin-bottom:22px;}
+  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.025em;font-size:clamp(36px,6.2vw,64px);line-height:1.02;margin-bottom:18px;}
   h1 em{font-style:normal;font-weight:900;color:var(--amber);}
-  .hero p{color:var(--muted);font-size:clamp(16px,2.1vw,19px);max-width:580px;margin:0 auto 30px}
+  .hero p{color:var(--muted);font-size:clamp(16px,2.1vw,19px);max-width:580px;margin:0 auto}
   .hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
   .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:11px;padding:13px 26px;cursor:pointer;
     text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s,color .2s;border:1px solid transparent;}
@@ -168,7 +170,7 @@
   .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
     border-radius:var(--r);padding:clamp(22px,3vw,34px);box-shadow:0 40px 80px -40px rgba(0,0,0,.8);}
   .field-label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:500;margin-bottom:10px}
-  textarea{width:100%;min-height:190px;resize:vertical;background:var(--bg);color:var(--paper);border:1px solid var(--line);
+  textarea{width:100%;min-height:150px;resize:vertical;background:var(--bg);color:var(--paper);border:1px solid var(--line);
     border-radius:12px;padding:16px;font-family:inherit;font-size:15px;line-height:1.7;transition:border-color .2s,box-shadow .2s;}
   textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(63,224,208,.12)}
   textarea::placeholder{color:#46556f}
@@ -324,18 +326,14 @@
     <span class="tag"><span class="pip"></span> Türkçe metin analizi · Motor v3</span>
     <h1>Bir metinde ne kadar<br><em>yapay zeka etkisi</em> var?</h1>
     <p>Ödev, tez, makale veya blog yazısı — herhangi bir Türkçe metni yapıştırın, yapay zeka etkisini ölçelim. Ücretsiz, kayıtsız ve dürüst. Kesin hüküm vermeyiz; açıklanabilir bir tahmin sunarız.</p>
-    <div class="hero-cta">
-      <a href="#analyzer" class="btn btn-primary">Metni analiz et</a>
-      <a href="#how" class="btn btn-ghost">Nasıl çalışır?</a>
-    </div>
   </header>
 
   <section class="analyzer" id="analyzer">
     <div class="card">
       <div class="field-label"><span>Analiz edilecek metin</span><span class="count" id="count">0 kelime</span></div>
-      <textarea id="txt" placeholder="Metni buraya yapıştırın… En sağlıklı sonuç için 80 kelime ve üzeri önerilir."></textarea>
+      <textarea id="txt" placeholder="Metni buraya yapıştırın… En sağlıklı sonuç için 150 kelime ve üzeri önerilir."></textarea>
       <div class="ctl">
-        <span class="count" style="color:#46556f">Metniniz kaydedilmez · analiz tarayıcınızda yapılır</span>
+        <span class="count" style="color:#46556f">Metniniz kaydedilmez · sunucuda anlık işlenir</span>
         <button class="btn btn-primary" id="go" disabled>Analiz et</button>
       </div>
 
@@ -411,7 +409,7 @@
       <ul>
         <li><span class="chk">✓</span><span><b>Bu bir tahmindir, kanıt değildir.</b> Skorumuzu hiçbir zaman birini suçlamak için tek delil olarak kullanmayın.</span></li>
         <li><span class="chk">✓</span><span><b>Türkçe zordur.</b> Sade ve kalıplı insan metinleri yanlışlıkla yüksek skor alabilir — bunu açıkça söyleriz.</span></li>
-        <li><span class="chk">✓</span><span><b>Metniniz kaydedilmez.</b> Analiz tarayıcınızda yapılır; içeriğiniz bir sunucuda saklanmaz.</span></li>
+        <li><span class="chk">✓</span><span><b>Metniniz kaydedilmez.</b> Analiz için sunucumuzda anlık işlenir, sonuç döner ve metin hiçbir yerde saklanmaz.</span></li>
         <li><span class="chk">✓</span><span><b>Kişiyi değil, metni değerlendiririz.</b> Yargımız metnin dilsel özellikleri üzerinedir, yazarın kim olduğu üzerine değil.</span></li>
       </ul>
     </div>
