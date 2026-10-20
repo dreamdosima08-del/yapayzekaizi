@@ -53,8 +53,17 @@ jobs:
           set -o pipefail
           # Kopyala-yapıştırda gelen boşluk/satır sonu/etiket fazlalıklarını temizle.
           # Cloudflare hesap kimliği her zaman 32 karakterlik onaltılık (hex) dizidir.
-          CLOUDFLARE_ACCOUNT_ID=$(printf '%s' "$RAW_ACCOUNT" | grep -oiE '[0-9a-f]{32}' | head -1 | tr 'A-F' 'a-f')
+          CLOUDFLARE_ACCOUNT_ID=$(printf '%s' "$RAW_ACCOUNT" | grep -oiE '[0-9a-f]{32}' | head -1 | tr 'A-F' 'a-f' || true)
           CLOUDFLARE_API_TOKEN=$(printf '%s' "$RAW_TOKEN" | tr -d '[:space:]')
+          # Teşhis (değerleri göstermeden, sadece biçim bilgisi)
+          acc_len=$(printf '%s' "$RAW_ACCOUNT" | wc -c | tr -d ' ')
+          acc_lines=$(printf '%s\n' "$RAW_ACCOUNT" | wc -l | tr -d ' ')
+          acc_kind="bilinmiyor"
+          printf '%s' "$RAW_ACCOUNT" | grep -q '@' && acc_kind="e-posta gibi görünüyor"
+          printf '%s' "$RAW_ACCOUNT" | grep -qiE '^[0-9a-f]{32}$' && acc_kind="doğru biçim"
+          printf '%s' "$RAW_ACCOUNT" | grep -qiE 'http|cloudflare' && acc_kind="adres (URL) gibi görünüyor"
+          tok_len=$(printf '%s' "$CLOUDFLARE_API_TOKEN" | wc -c | tr -d ' ')
+          echo "::warning::Teşhis — ACCOUNT_ID: ${acc_len} karakter, ${acc_lines} satır, tür: ${acc_kind} | API_TOKEN: ${tok_len} karakter"
           if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
             echo "::error::CLOUDFLARE_ACCOUNT_ID içinde 32 karakterlik hesap kimliği bulunamadı"; exit 1
           fi
@@ -66,7 +75,8 @@ jobs:
         if: failure() && steps.check.outputs.ready == 'true'
         run: |
           # Hata satırlarını uyarı (annotation) olarak yaz ki dışarıdan okunabilsin
-          grep -iE "error|✘|code:|authentication|permission|not found|account" deploy.log | head -15 | while IFS= read -r line; do
+          [ -f deploy.log ] || exit 0
+          sed 's/\x1b\[[0-9;]*m//g' deploy.log | grep -v '^\s*$' | tail -15 | while IFS= read -r line; do
             echo "::error::$line"
           done
 
