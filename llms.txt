@@ -4,6 +4,9 @@
 
 YapayZekaİzi, bir metnin ne kadar "yapay zeka etkisi" taşıdığını Türkçe'ye özel istatistiksel yöntemlerle değerlendirir. Temel ilkesi dürüstlüktür: hiçbir sonuç kesin kanıt olarak sunulmaz, yalnızca olasılık sinyali olarak verilir.
 
+## Analiz Motoru
+- Motor v3 (Ekim 2026): klasik dil istatistiklerine ek olarak yeni nesil modellerin (Claude, GPT-5, Gemini) bıraktığı "AI parmak izi" katmanı — modern öbekler, tipografi (uzun tire), paragraf simetrisi, üslup düzlüğü, süslü sıfat yoğunluğu.
+
 ## Önemli İlkeler
 - Sonuçlar tahmindir, kesin kanıt değildir.
 - Sade veya resmi yazan insanlar yanlışlıkla yüksek skor alabilir (yanlış pozitif).

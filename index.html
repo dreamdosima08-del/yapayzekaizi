@@ -200,6 +200,11 @@
     background:rgba(242,179,74,.1);border:1px solid rgba(242,179,74,.22);border-radius:8px;padding:5px 11px}
 
   .signals{display:grid;gap:11px;margin-top:30px}
+  .sig-group{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:14px 0 2px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .sig-group:first-child{margin-top:0}
+  .sig-group-title{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+  .sig-group-sub{font-size:12.5px;color:var(--muted)}
+  .engine-note{margin-top:22px;padding:12px 16px;border-radius:10px;font-size:13.5px;line-height:1.6;color:#cfd8ea;background:rgba(63,224,208,.06);border:1px solid rgba(63,224,208,.2)}
   .signal{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
   .signal-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
   .signal-name{font-size:13.5px;font-weight:600}
@@ -222,6 +227,10 @@
   @media(max-width:680px){.sig-list{grid-template-columns:1fr}}
   .sig-card{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:20px 22px}
   .sig-card h4{font-size:15.5px;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .layer-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:6px 0 14px}
+  .layer-label span{color:var(--amber);margin-right:8px}
+  .sig-list + .layer-label{margin-top:34px}
+  .sig-card h4 .mk.mk-amber{background:var(--amber)}
   .sig-card h4 .mk{width:8px;height:8px;border-radius:2px;background:var(--cyan)}
   .sig-card p{color:var(--muted);font-size:13.5px}
 
@@ -312,7 +321,7 @@
   </nav>
 
   <header class="hero">
-    <span class="tag"><span class="pip"></span> Türkçe metin analizi</span>
+    <span class="tag"><span class="pip"></span> Türkçe metin analizi · Motor v3</span>
     <h1>Bir metinde ne kadar<br><em>yapay zeka etkisi</em> var?</h1>
     <p>Ödev, tez, makale veya blog yazısı — herhangi bir Türkçe metni yapıştırın, yapay zeka etkisini ölçelim. Ücretsiz, kayıtsız ve dürüst. Kesin hüküm vermeyiz; açıklanabilir bir tahmin sunarız.</p>
     <div class="hero-cta">
@@ -352,6 +361,7 @@
           </div>
         </div>
 
+        <p class="engine-note" id="engineNote" style="display:none"></p>
         <div class="signals" id="signals"></div>
 
         <div class="disclaimer">
@@ -376,14 +386,22 @@
   <section id="signals">
     <div class="sec-head reveal">
       <div class="sec-eyebrow">Baktığımız sinyaller</div>
-      <h2>Yapay zeka tespitinde baktığımız dört sinyal</h2>
-      <p>Yapay zeka metin analizinde her sinyal tek başına yanıltıcı olabilir; birlikte bir resim oluştururlar.</p>
+      <h2>Yapay zeka tespitinde iki katman, 13 sinyal</h2>
+      <p>Yeni nesil yapay zeka artık "insan gibi" yazıyor. Bu yüzden klasik dil istatistiklerinin üstüne, bugünün modellerinin hâlâ bıraktığı izleri arayan ikinci bir katman ekledik.</p>
     </div>
+    <div class="layer-label reveal"><span>Katman 1</span> AI parmak izi — yeni</div>
     <div class="sig-list tilt-scene">
-      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Cümle homojenliği</h4><p>İnsan yazısı cümle uzunluklarında dalgalanır; yapay zeka metni daha tekdüze bir ritim taşıma eğilimindedir.</p></div>
-      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kelime tekdüzeliği</h4><p>Kelime çeşitliliğinin beklenenden düşük olması, kalıplaşmış üretim sinyali olabilir.</p></div>
-      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kalıp ifade yoğunluğu</h4><p>"Sonuç olarak", "günümüzde", "dikkat etmek gerekir" gibi geçiş kalıplarının sıklığı.</p></div>
-      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kişisel iz yokluğu</h4><p>Deneyim, duygu, özgün örnek ve birinci tekil anlatımın eksikliği makine metninde sık görülür.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk mk-amber"></span>Modern AI öbekleri</h4><p>"Önemli bir rol oynar", "ayrılmaz bir parçası", "dönüm noktası", "izler bıraktı" gibi yeni nesil modellerin çok sevdiği hazır öbekler.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk mk-amber"></span>Tipografi izi</h4><p>Uzun tire (—) ve kıvrık tırnak (“ ”) yapay zeka metinlerinde sık, klavyeyle yazan insanda nadirdir.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk mk-amber"></span>Üslup düzlüğü ve süslü sıfatlar</h4><p>Ünlem, argo, yarım cümle gibi "insan pürüzü" yokluğu; "eşsiz", "köklü", "zarafet" gibi abartılı betimlemelerin yoğunluğu.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk mk-amber"></span>Paragraf simetrisi</h4><p>Yapay zeka paragrafları birbirine çok benzer uzunlukta kurar; insan yazısında paragraflar daha düzensizdir.</p></div>
+    </div>
+    <div class="layer-label reveal"><span>Katman 2</span> Klasik dil sinyalleri</div>
+    <div class="sig-list tilt-scene">
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Cümle ritmi</h4><p>İnsan yazısı cümle uzunluklarında dalgalanır; yapay zeka metni daha tekdüze bir ritim taşıma eğilimindedir.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kelime çeşitliliği</h4><p>Türkçenin sondan eklemeli yapısına göre kök bazında ölçülen kelime tekrarı.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kalıp ifadeler</h4><p>"Sonuç olarak", "günümüzde", "dikkat etmek gerekir" gibi geçiş kalıplarının sıklığı.</p></div>
+      <div class="sig-card tilt reveal"><h4><span class="mk"></span>Kişisel iz</h4><p>Deneyim, duygu, özgün örnek ve birinci tekil anlatımın eksikliği makine metninde sık görülür.</p></div>
     </div>
   </section>
 
@@ -527,9 +545,10 @@ go.addEventListener('click',async()=>{
     if(!resp.ok)throw new Error('api');
     const d=await resp.json();
     if(d.error)throw new Error(d.error);
-    r={score:d.score/100,signals:d.signals.map(x=>({name:x.name,val:x.value/100,desc:x.desc||''})),lowConfidence:d.confidence==='düşük'};
+    r={score:d.score/100,signals:d.signals.map(x=>({name:x.name,val:x.value/100,desc:x.desc||'',layer:x.layer||'klasik'})),lowConfidence:d.confidence==='düşük',note:d.note||null,fallback:false};
   }catch(e){
     r=analyze(txt.value); // yedek: yerel motor
+    r.fallback=true;
   }
   go.disabled=false;go.textContent=original;
   const p=Math.round(r.score*100);
@@ -543,12 +562,27 @@ go.addEventListener('click',async()=>{
   document.getElementById('verdictSub').textContent=v[1];
   const conf=document.getElementById('conf');
   if(r.lowConfidence){conf.style.display='inline-block';conf.textContent='\u26a0 Metin k\u0131sa \u2014 g\u00fcven d\u00fc\u015f\u00fck';}else{conf.style.display='none';}
+  const noteEl=document.getElementById('engineNote');
+  const notes=[];
+  if(r.note)notes.push(r.note);
+  if(r.fallback)notes.push('Sunucu motoruna \u015fu an ula\u015f\u0131lamad\u0131; sonu\u00e7 taray\u0131c\u0131daki basit yedek motorla \u00fcretildi ve daha az g\u00fcvenilir.');
+  if(notes.length){noteEl.style.display='block';noteEl.textContent=notes.join(' ');}else{noteEl.style.display='none';}
   const box=document.getElementById('signals');box.innerHTML='';
-  r.signals.forEach((s,i)=>{
-    const pc=Math.round(s.val*100),el=document.createElement('div');el.className='signal';
-    el.innerHTML='<div class="signal-top"><span class="signal-name">'+s.name+'</span><span class="signal-val">'+pc+'% \u00b7 '+s.desc+'</span></div><div class="bar"><i></i></div>';
-    box.appendChild(el);const bar=el.querySelector('.bar i');
-    setTimeout(()=>{bar.style.width=pc+'%';bar.style.background=colorFor(pc);},220+i*120);
+  const layers=[['parmakizi','AI parmak izi','Yeni nesil modellerin (Claude, GPT-5, Gemini) b\u0131rakt\u0131\u011f\u0131 izler'],['klasik','Klasik dil sinyalleri','C\u00fcmle, kelime ve ak\u0131\u015f istatistikleri']];
+  let i=0;
+  layers.forEach(([key,title,sub])=>{
+    const group=r.signals.filter(s=>(s.layer||'klasik')===key);
+    if(!group.length)return;
+    const h=document.createElement('div');h.className='sig-group';
+    h.innerHTML='<span class="sig-group-title">'+title+'</span><span class="sig-group-sub">'+sub+'</span>';
+    box.appendChild(h);
+    group.forEach(s=>{
+      const pc=Math.round(s.val*100),el=document.createElement('div');el.className='signal';
+      el.innerHTML='<div class="signal-top"><span class="signal-name">'+s.name+'</span><span class="signal-val">'+pc+'% \u00b7 '+s.desc+'</span></div><div class="bar"><i></i></div>';
+      box.appendChild(el);const bar=el.querySelector('.bar i');
+      const d=200+(i++)*70;
+      setTimeout(()=>{bar.style.width=pc+'%';bar.style.background=colorFor(pc);},d);
+    });
   });
   document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'});
 });
