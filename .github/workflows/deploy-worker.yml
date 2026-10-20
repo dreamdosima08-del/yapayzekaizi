@@ -1,0 +1,59 @@
+# worker/ klasöründe bir değişiklik main'e gelince analiz motorunu
+# Cloudflare'e otomatik yükler. Elle çalıştırmak için: Actions → "Analiz motorunu yayınla" → Run workflow
+name: Analiz motorunu yayınla
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "worker/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Anahtarlar tanımlı mı?
+        id: check
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN veya CLOUDFLARE_ACCOUNT_ID tanımlı değil — yayın atlandı."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - name: Sözdizimi kontrolü
+        if: steps.check.outputs.ready == 'true'
+        run: node --check worker/worker.js
+
+      - name: Cloudflare'e yayınla
+        if: steps.check.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+
+      - name: Canlı sürümü doğrula
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          expected=$(grep -o 'version:"[0-9.]*"' worker/worker.js | head -1 | cut -d'"' -f2)
+          echo "Beklenen sürüm: $expected"
+          for i in 1 2 3 4 5 6; do
+            out=$(curl -s https://yapayzekaizi.dreamdosima08.workers.dev)
+            echo "$out" | grep -q "\"version\":\"$expected\"" && { echo "Canlı: $out"; exit 0; }
+            sleep 5
+          done
+          echo "::error::Canlı Worker beklenen sürümü ($expected) döndürmedi: $out"; exit 1
