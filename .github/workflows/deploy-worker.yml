@@ -38,13 +38,28 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         run: node --check worker/worker.js
 
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ready == 'true'
+        with:
+          node-version: 22
+
       - name: Cloudflare'e yayınla
         if: steps.check.outputs.ready == 'true'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: worker
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy 2>&1 | tee ../deploy.log
+
+      - name: Hata özeti
+        if: failure() && steps.check.outputs.ready == 'true'
+        run: |
+          # Hata satırlarını uyarı (annotation) olarak yaz ki dışarıdan okunabilsin
+          grep -iE "error|✘|code:|authentication|permission|not found|account" deploy.log | head -15 | while IFS= read -r line; do
+            echo "::error::$line"
+          done
 
       - name: Canlı sürümü doğrula
         if: steps.check.outputs.ready == 'true'
