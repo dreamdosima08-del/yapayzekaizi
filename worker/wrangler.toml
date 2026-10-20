@@ -1,7 +1,8 @@
 # YapayZekaİzi analiz motoru — Cloudflare Worker ayarı
 # Bu dosya GitHub Actions tarafından otomatik yayın için kullanılır.
-# Hesap kimliği ve API anahtarı burada DEĞİL, GitHub Secrets'ta durur.
+# API anahtarı burada DEĞİL, GitHub Secrets'ta durur. Hesap kimliği gizli bilgi değildir.
 name = "yapayzekaizi"
+account_id = "1b0a0a3ba97a553dca360230744b5471"
 main = "worker.js"
 compatibility_date = "2026-06-01"
 workers_dev = true
