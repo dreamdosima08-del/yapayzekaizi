@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotoğraf Yapay Zeka mı? Ücretsiz Görsel Tespiti | YapayZekaİzi</title>
+<meta name="description" content="Bir fotoğraf yapay zeka ile mi üretildi? Görseldeki gizli AI etiketlerini (C2PA) cihazınızdan çıkmadan kontrol edin, isterseniz derin analizle Midjourney, ChatGPT, Flux gibi üreticilere benzerliğini görün. Ücretsiz, Türkçe.">
+<link rel="canonical" href="https://yapayzekaizi.com/gorsel.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bu fotoğraf yapay zeka ile mi üretildi? — YapayZekaİzi">
+<meta property="og:description" content="Gizli AI etiketlerini kontrol edin, derin analizle yapay zeka ihtimalini görün. Ücretsiz ve Türkçe.">
+<meta property="og:url" content="https://yapayzekaizi.com/gorsel.html">
+<meta property="og:image" content="https://yapayzekaizi.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "YapayZekaİzi Görsel Analizi",
+      "url": "https://yapayzekaizi.com/gorsel.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "tr-TR",
+      "description": "Fotoğraflardaki yapay zeka üretim etiketlerini (C2PA) tarayıcıda kontrol eden ve isteğe bağlı derin analizle yapay zeka ihtimalini tahmin eden ücretsiz Türkçe araç.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Bir fotoğrafın yapay zeka ile üretildiği nasıl anlaşılır?",
+         "acceptedAnswer": {"@type": "Answer", "text": "İki yol vardır. Birincisi, OpenAI, Adobe ve Anthropic gibi şirketlerin görsellere gömdüğü dijital içerik kimliğini (C2PA) okumaktır; etiket varsa bu güçlü bir kanıttır. İkincisi, görselin piksellerini inceleyen bir yapay zeka modeliyle olasılık tahmini yapmaktır."}},
+        {"@type": "Question", "name": "WhatsApp'tan gelen fotoğrafta yapay zeka etiketi neden bulunmuyor?",
+         "acceptedAnswer": {"@type": "Answer", "text": "WhatsApp, Instagram gibi uygulamalar ve ekran görüntüsü almak, görselin içindeki üst verileri genellikle siler. Bu yüzden etiketin bulunmaması görselin gerçek olduğunu kanıtlamaz."}},
+        {"@type": "Question", "name": "Yüklediğim fotoğraf saklanıyor mu?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Etiket kontrolünde fotoğraf cihazınızdan hiç çıkmaz. Derin analizi seçerseniz küçültülmüş bir kopyası yalnızca analiz için Sightengine'e gönderilir; YapayZekaİzi görseli saklamaz."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
+  :root{--bg:#070b14;--bg-2:#0b111e;--panel:#101829;--panel-2:#0d1421;--line:#1e2a42;--line-soft:rgba(22,32,51,.32);
+    --paper:#e9eef7;--muted:#7e8eae;--cyan:#3fe0d0;--amber:#f2b34a;--coral:#f0685c;--r:16px;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--paper);line-height:1.65;background:linear-gradient(180deg,var(--bg),var(--bg-2));min-height:100vh;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:54px 54px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%);opacity:.5}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+  a{color:inherit}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;text-decoration:none;color:var(--paper)}
+  .brand .logo{display:block;flex-shrink:0}
+  .nav-links{display:flex;gap:26px;font-size:14px}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover,.nav-links a[aria-current]{color:var(--paper)}
+  .nav-links a[aria-current]{border-bottom:1px solid var(--cyan)}
+  @media(max-width:640px){nav{flex-wrap:wrap;row-gap:12px}.nav-links{display:flex;width:100%;gap:18px;overflow-x:auto;white-space:nowrap;padding-bottom:4px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav-links::-webkit-scrollbar{display:none}}
+  h1,h2,h3{text-wrap:balance}
+
+  .hero{text-align:center;padding:clamp(28px,5vw,56px) 0 clamp(18px,2.5vw,30px)}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:7px 16px;margin-bottom:22px}
+  .tag .pip{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber)}
+  h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.025em;font-size:clamp(34px,6vw,60px);line-height:1.03;margin-bottom:16px;text-shadow:0 20px 48px rgba(0,0,0,.35)}
+  h1 em{font-style:normal;color:var(--amber)}
+  .hero p{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:600px;margin:0 auto}
+
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:clamp(18px,3vw,30px);
+    box-shadow:0 2px 4px rgba(0,0,0,.3),0 30px 60px -28px rgba(0,0,0,.75)}
+
+  /* yükleme alanı */
+  .drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;
+    min-height:220px;border:1.5px dashed #2a3a5c;border-radius:14px;background:var(--bg);cursor:pointer;padding:24px;transition:border-color .2s,background .2s}
+  .drop:hover,.drop.over{border-color:var(--cyan);background:#0a1220}
+  .drop:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+  .drop .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(63,224,208,.08);border:1px solid rgba(63,224,208,.25)}
+  .drop strong{font-size:16px}
+  .drop span{font-size:13px;color:var(--muted)}
+  .drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .preview{display:none;grid-template-columns:minmax(0,300px) 1fr;gap:22px;align-items:start}
+  .preview.show{display:grid}
+  @media(max-width:700px){.preview.show{grid-template-columns:1fr}}
+  .thumb{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:1/1;display:grid;place-items:center}
+  .thumb img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+  .file-meta{font-size:12.5px;color:var(--muted);margin-top:8px;word-break:break-all}
+  .change{margin-top:10px;font:inherit;font-size:13px;color:var(--cyan);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline}
+
+  /* adımlar */
+  .step{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;background:rgba(7,11,20,.55)}
+  .step + .step{margin-top:14px}
+  .step-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .step-title{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .step-title b{color:var(--cyan);margin-right:6px}
+  .badge{font-size:11.5px;padding:4px 10px;border-radius:100px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .verdict{font-family:'Fraunces',serif;font-size:22px;font-weight:600;line-height:1.25;margin-bottom:6px}
+  .verdict.ai{color:var(--coral)} .verdict.mid{color:var(--amber)} .verdict.ok{color:var(--cyan)} .verdict.none{color:var(--paper)}
+  .explain{font-size:14px;color:#c3cde0}
+  .facts{list-style:none;margin-top:10px;display:grid;gap:6px}
+  .facts li{font-size:13.5px;color:var(--muted);padding-left:18px;position:relative}
+  .facts li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:2px;background:var(--amber)}
+  .facts li b{color:var(--paper);font-weight:600}
+
+  .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:11px;padding:12px 22px;cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .2s,opacity .2s}
+  .btn-primary{background:var(--cyan);color:#042622}
+  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--cyan)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .deep-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+  .quota{font-size:12.5px;color:var(--muted)}
+  .consent{font-size:12.5px;color:#7f8db0;margin-top:10px}
+  .consent a{color:var(--cyan)}
+
+  .meter{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:6px}
+  @media(max-width:520px){.meter{grid-template-columns:1fr;justify-items:center;text-align:center}}
+  .ring{width:120px;height:120px;position:relative}
+  .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .ring .trk{fill:none;stroke:#16223a;stroke-width:10}
+  .ring .val{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.16,1,.3,1)}
+  .ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:30px}
+  .gens{margin-top:10px;display:grid;gap:7px}
+  .gen{display:grid;grid-template-columns:150px 1fr 42px;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+  .gen .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+  .gen .bar i{display:block;height:100%;background:var(--amber);border-radius:3px}
+  .err{color:var(--coral);font-size:14px;margin-top:10px}
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(4,38,34,.3);border-top-color:#042622;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  .disclaimer{margin-top:18px;padding:14px 16px;background:rgba(242,179,74,.06);border:1px solid rgba(242,179,74,.22);border-radius:11px;font-size:13px;color:#e8d2a4;line-height:1.6}
+  .disclaimer strong{color:var(--amber)}
+
+  section{padding:clamp(40px,6vw,72px) 0}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto clamp(28px,4vw,44px)}
+  .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:12px}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.6vw,36px);line-height:1.12;letter-spacing:-.02em;margin-bottom:10px}
+  .sec-head p{color:var(--muted)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .info{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+  .info .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  .info h3{font-size:17px;margin-bottom:8px}
+  .info p{color:var(--muted);font-size:14.5px}
+  .limits{list-style:none;display:grid;gap:12px;max-width:760px;margin:0 auto}
+  .limits li{display:flex;gap:12px;color:var(--muted);font-size:15px}
+  .limits li b{color:var(--paper)}
+  .limits .chk{flex-shrink:0;width:20px;height:20px;border-radius:6px;background:rgba(63,224,208,.12);border:1px solid var(--cyan);display:grid;place-items:center;color:var(--cyan);font-size:12px;margin-top:2px}
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  .faq-item{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+  .faq-item h3{font-size:16.5px;margin-bottom:8px}
+  .faq-item p{color:var(--muted);font-size:14.5px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer .brand{justify-content:center;margin-bottom:12px}
+  .foot-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .foot-links a{color:var(--muted);text-decoration:none}
+  .foot-links a:hover{color:var(--cyan)}
+  footer .fine{max-width:520px;margin:0 auto;font-size:12px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="index.html"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lzg" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lzg)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</a>
+    <div class="nav-links">
+      <a href="index.html">Metin analizi</a>
+      <a href="gorsel.html" aria-current="page">Görsel analizi</a>
+      <a href="#nasil">Nasıl çalışır</a>
+      <a href="#sinirlar">Sınırlar</a>
+      <a href="blog.html">Blog</a>
+      <a href="yasal.html">Yasal</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="tag"><span class="pip"></span> Görsel analizi · Yeni</span>
+    <h1>Bu fotoğraf <em>yapay zeka</em> ile mi üretildi?</h1>
+    <p>Görseli bırakın: önce içindeki gizli yapay zeka etiketlerine bakalım — fotoğrafınız cihazınızdan çıkmadan. İsterseniz ardından derin analizle olasılığı ölçelim.</p>
+  </header>
+
+  <main class="card" id="arac">
+    <label class="drop" id="drop" tabindex="0">
+      <input type="file" id="file" accept="image/*" aria-label="Fotoğraf seç">
+      <span class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3fe0d0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
+      <strong>Fotoğrafı buraya sürükleyin ya da seçmek için dokunun</strong>
+      <span>JPG, PNG, WebP, HEIC · Panodan yapıştırmak için Ctrl+V</span>
+    </label>
+
+    <div class="preview" id="preview">
+      <div>
+        <div class="thumb"><img id="img" alt="Seçilen görsel önizlemesi"></div>
+        <div class="file-meta" id="fileMeta"></div>
+        <button class="change" id="change" type="button">Başka bir görsel seç</button>
+      </div>
+      <div>
+        <div class="step" id="step1">
+          <div class="step-head"><span class="step-title"><b>1</b>Etiket kontrolü</span><span class="badge">Cihazınızda · ücretsiz</span></div>
+          <div class="verdict none" id="v1">İnceleniyor…</div>
+          <p class="explain" id="e1"></p>
+          <ul class="facts" id="f1"></ul>
+        </div>
+        <div class="step" id="step2">
+          <div class="step-head"><span class="step-title"><b>2</b>Derin analiz</span><span class="badge">Yapay zeka modeli</span></div>
+          <div id="deepIdle">
+            <p class="explain">Görselin piksellerini inceleyen bir yapay zeka modeliyle, etiket olmasa da üretim ihtimalini tahmin eder. Hangi üreticiye benzediğini de gösterir.</p>
+            <div class="deep-row">
+              <button class="btn btn-primary" id="deepBtn" type="button">Derin analiz yap</button>
+              <span class="quota" id="quota"></span>
+            </div>
+            <p class="consent">Derin analizde görselin küçültülmüş bir kopyası yalnızca analiz için <a href="https://sightengine.com" target="_blank" rel="noopener">Sightengine</a>'e gönderilir; biz saklamayız. Ayrıntı: <a href="yasal.html#gorsel">gizlilik</a>.</p>
+          </div>
+          <div id="deepResult" hidden>
+            <div class="meter">
+              <div class="ring"><svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="50"/><circle class="val" id="ringVal" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"/></svg><div class="pct" id="ringPct">%0</div></div>
+              <div>
+                <div class="verdict" id="v2"></div>
+                <p class="explain" id="e2"></p>
+              </div>
+            </div>
+            <div class="gens" id="gens"></div>
+            <p class="quota" id="quotaAfter" style="margin-top:10px"></p>
+          </div>
+          <p class="err" id="deepErr" hidden></p>
+        </div>
+        <div class="disclaimer"><strong>Bunu bilmeniz önemli:</strong> Etiketin bulunması güçlü bir işarettir; bulunmaması ise görselin gerçek olduğunu <strong>kanıtlamaz</strong>. Derin analiz bir <strong>tahmindir</strong>. Sonucu bir kişiyi suçlamak için tek başına kullanmayın.</div>
+      </div>
+    </div>
+  </main>
+
+  <section id="nasil">
+    <div class="sec-head">
+      <div class="eyebrow">Nasıl çalışır</div>
+      <h2>İki adım: önce kanıt, sonra tahmin</h2>
+      <p>Görsellerde, metinlerde olmayan bir şans var: bazı yapay zeka araçları ürettikleri görsele dijital bir kimlik kartı ekliyor.</p>
+    </div>
+    <div class="two">
+      <div class="info"><div class="k" style="color:var(--cyan)">1 · Etiket kontrolü</div><h3>İçerik kimliği (C2PA) ve üretici izleri</h3><p>OpenAI (ChatGPT görselleri), Adobe Firefly ve Anthropic gibi şirketler görsele "yapay zeka ile üretildi" bilgisini içeren imzalı bir kimlik gömer. Stable Diffusion ve ComfyUI gibi araçlar da dosyaya ayarlarını yazar. Bunları tarayıcınızda okuruz; görsel hiçbir yere gönderilmez.</p></div>
+      <div class="info"><div class="k" style="color:var(--amber)">2 · Derin analiz</div><h3>Piksellerden olasılık tahmini</h3><p>Etiket silinmiş olsa bile, yapay zeka görselleri piksellerde belirli izler bırakır. Bu izleri tanımak üzere eğitilmiş bir model, görselin yapay zeka ile üretilme ihtimalini ve hangi üreticiye benzediğini tahmin eder.</p></div>
+    </div>
+  </section>
+
+  <section id="sinirlar">
+    <div class="sec-head">
+      <div class="eyebrow">Sınırlar</div>
+      <h2>Neyi bilebiliriz, neyi bilemeyiz</h2>
+    </div>
+    <ul class="limits">
+      <li><span class="chk">✓</span><span><b>WhatsApp, Instagram ve ekran görüntüleri etiketleri siler.</b> Bu yollardan gelen görsellerde etiket bulunmaması normaldir ve bir şey kanıtlamaz.</span></li>
+      <li><span class="chk">✓</span><span><b>Her araç etiket koymaz.</b> Midjourney gibi bazı araçlar imzalı kimlik eklemez; Google ise kendi görünmez filigranını (SynthID) kullanır ve bunu biz okuyamayız.</span></li>
+      <li><span class="chk">✓</span><span><b>Etiket bu sitede kriptografik olarak doğrulanmaz.</b> Etiketin varlığını ve içeriğini okuruz; imzanın geçerliliğini kontrol etmeyiz.</span></li>
+      <li><span class="chk">✓</span><span><b>Derin analiz yanılabilir.</b> Çok sıkıştırılmış, kırpılmış ya da düzenlenmiş görsellerde doğruluk düşer. Sonuç bir tahmindir.</span></li>
+    </ul>
+  </section>
+
+  <section id="sss">
+    <div class="sec-head"><div class="eyebrow">Sık sorulan sorular</div><h2>Merak edilenler</h2></div>
+    <div class="faq">
+      <div class="faq-item"><h3>Bir fotoğrafın yapay zeka ile üretildiği nasıl anlaşılır?</h3><p>En güvenilir yol, görselin içine gömülü içerik kimliğini (C2PA) okumaktır; OpenAI, Adobe ve Anthropic gibi şirketler bunu ekliyor. Etiket yoksa, piksellerdeki izleri inceleyen bir yapay zeka modeliyle olasılık tahmini yapılır. İkisini birlikte kullanmak en sağlıklı sonucu verir.</p></div>
+      <div class="faq-item"><h3>WhatsApp'tan gelen fotoğrafta etiket neden çıkmıyor?</h3><p>WhatsApp, Instagram, X gibi uygulamalar görseli sıkıştırırken içindeki üst verileri genellikle siler. Ekran görüntüsü almak da aynı sonucu doğurur. Bu durumda derin analiz daha anlamlıdır.</p></div>
+      <div class="faq-item"><h3>Yüklediğim fotoğraf saklanıyor mu?</h3><p>Etiket kontrolünde fotoğraf cihazınızdan hiç çıkmaz. Derin analizi seçerseniz küçültülmüş bir kopyası yalnızca analiz için Sightengine'e gönderilir; YapayZekaİzi görseli hiçbir yerde saklamaz.</p></div>
+      <div class="faq-item"><h3>Derin analiz neden günde sınırlı?</h3><p>Derin analiz ücretli bir yapay zeka servisi kullanıyor ve biz bunu ücretsiz sunuyoruz. Herkesin faydalanabilmesi için kişi başına ve günlük toplam bir sınır var. Etiket kontrolü ise sınırsızdır.</p></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lzg2" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lzg2)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</div>
+  <div class="foot-links">
+    <a href="index.html">Metin analizi</a>
+    <a href="blog.html">Blog</a>
+    <a href="yasal.html#gizlilik">Gizlilik</a>
+    <a href="yasal.html#kvkk">KVKK</a>
+    <a href="yasal.html#sorumluluk">Sorumluluk Reddi</a>
+    <a href="mailto:dreamdosima08@gmail.com">İletişim</a>
+  </div>
+  <p class="fine">Sonuçlar tahmini sinyallerdir, kesin hüküm değildir. · dreamdosima08@gmail.com</p>
+</footer>
+
+<script>
+(function(){
+  const API = "https://yapayzekaizi-gorsel.dreamdosima08.workers.dev";
+  const $ = id => document.getElementById(id);
+  const drop=$('drop'), input=$('file'), preview=$('preview'), img=$('img');
+  let current=null;
+
+  /* ---------- dosya alma: seç, sürükle, yapıştır ---------- */
+  input.addEventListener('change', e => { if (e.target.files[0]) handle(e.target.files[0]); });
+  ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => { const f=e.dataTransfer.files[0]; if (f) handle(f); });
+  drop.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); input.click(); } });
+  window.addEventListener('paste', e => {
+    const it=[...(e.clipboardData||{}).items||[]].find(i=>i.type.startsWith('image/'));
+    if (it) handle(it.getAsFile());
+  });
+  $('change').addEventListener('click', () => { input.value=''; input.click(); });
+
+  function fmtSize(b){ return b>1048576 ? (b/1048576).toFixed(1)+' MB' : Math.round(b/1024)+' KB'; }
+
+  async function handle(file){
+    if (!file) return;
+    if (file.size > 25*1024*1024) { alert('Dosya çok büyük (en fazla 25 MB).'); return; }
+    current = file;
+    drop.style.display='none'; preview.classList.add('show');
+    img.src = URL.createObjectURL(file);
+    $('fileMeta').textContent = (file.name||'Panodan yapıştırılan görsel') + ' · ' + fmtSize(file.size);
+    resetDeep();
+    const buf = await file.arrayBuffer();
+    renderLabel(scan(new Uint8Array(buf), file));
+    refreshQuota();
+    preview.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  /* ---------- 1. adım: etiket kontrolü (tamamen tarayıcıda) ---------- */
+  const ISSUERS = [
+    [/OpenAI|ChatGPT|DALL[·\-· ]?E|gpt-image|GPT-4o/i, 'OpenAI (ChatGPT / DALL·E)'],
+    [/Adobe Firefly|Firefly/i, 'Adobe Firefly'],
+    [/Anthropic|Claude/, 'Anthropic (Claude)'],
+    [/Imagen|Gemini|Nano Banana|SynthID/i, 'Google (Gemini / Imagen)'],
+    [/Bing Image Creator|Microsoft Designer|Microsoft Copilot|Azure OpenAI/i, 'Microsoft (Copilot / Designer)'],
+    [/Meta AI|Imagine with Meta/i, 'Meta AI'],
+    [/Midjourney/i, 'Midjourney'],
+    [/Leonardo\.Ai/i, 'Leonardo.Ai'],
+    [/Ideogram/i, 'Ideogram'],
+    [/FLUX\.1|black-forest-labs/, 'Flux'],
+    [/Stable Diffusion|SDXL|stability\.ai|AUTOMATIC1111|InvokeAI|NovelAI/i, 'Stable Diffusion'],
+  ];
+
+  function latin1(u8){ try { return new TextDecoder('iso-8859-1').decode(u8); } catch(e){ let s=''; for(let i=0;i<u8.length;i++) s+=String.fromCharCode(u8[i]); return s; } }
+
+  function exifCamera(u8){
+    // JPEG APP1 "Exif" içinden Make / Model / Software okur (küçük, bağımsız ayrıştırıcı)
+    if (u8[0]!==0xFF || u8[1]!==0xD8) return null;
+    let p=2;
+    while (p+4 < u8.length && u8[p]===0xFF) {
+      const m=u8[p+1], len=(u8[p+2]<<8)|u8[p+3];
+      if (m===0xE1 && u8[p+4]===0x45 && u8[p+5]===0x78 && u8[p+6]===0x69 && u8[p+7]===0x66) {
+        const t=p+10, le=u8[t]===0x49;
+        const r16=o=>le?(u8[t+o]|(u8[t+o+1]<<8)):((u8[t+o]<<8)|u8[t+o+1]);
+        const r32=o=>le?(u8[t+o]|(u8[t+o+1]<<8)|(u8[t+o+2]<<16)|(u8[t+o+3]<<24))>>>0:((u8[t+o]<<24)|(u8[t+o+1]<<16)|(u8[t+o+2]<<8)|u8[t+o+3])>>>0;
+        const ifd=r32(4), n=r16(ifd), out={};
+        for (let i=0;i<n && i<200;i++){
+          const e=ifd+2+i*12, tag=r16(e), cnt=r32(e+4);
+          if ([0x010F,0x0110,0x0131].includes(tag)) {
+            const off = cnt>4 ? r32(e+8) : e+8; let s='';
+            for (let k=0;k<cnt-1 && t+off+k<u8.length;k++) s+=String.fromCharCode(u8[t+off+k]);
+            out[tag===0x010F?'make':tag===0x0110?'model':'software']=s.trim();
+          }
+        }
+        return out;
+      }
+      if (m===0xDA) break;
+      p += 2 + len;
+    }
+    return null;
+  }
+
+  function scan(u8, file){
+    const s = latin1(u8);
+    const r = { c2pa:false, aiSource:null, issuers:[], sd:false, comfy:false, camera:null, software:null, screenshot:false, whatsapp:false, xmpAi:false };
+    r.c2pa = /c2pa\.(claim|actions|assertions|signature)|jumbc2pa/.test(s) || (s.includes('jumb') && s.includes('c2pa'));
+    if (/compositeWithTrainedAlgorithmicMedia/.test(s)) r.aiSource='composite';
+    else if (/trainedAlgorithmicMedia/.test(s)) r.aiSource='generated';
+    else if (/algorithmicMedia/.test(s)) r.aiSource='algorithmic';
+    r.xmpAi = !!r.aiSource && /DigitalSourceType/i.test(s);
+    r.sd = /parameters[\x00\s][\s\S]{0,4000}Steps: \d+[\s\S]{0,400}Sampler:/.test(s);
+    r.comfy = /"class_type"\s*:\s*"(KSampler|CheckpointLoader)/.test(s) || /ComfyUI/.test(s);
+    for (const [re,name] of ISSUERS) if (re.test(s) && !r.issuers.includes(name)) r.issuers.push(name);
+    // Google adı tek başına (Pixel kamerası) AI sayılmasın: yalnızca AI kaynak etiketiyle birlikte
+    if (r.issuers.includes('Google (Gemini / Imagen)') && !r.aiSource && !/Imagen|Gemini|Nano Banana/i.test(s)) r.issuers = r.issuers.filter(x=>x!=='Google (Gemini / Imagen)');
+    const ex = exifCamera(u8);
+    if (ex) { if (ex.make||ex.model) r.camera=[ex.make,ex.model].filter(Boolean).join(' '); if (ex.software) r.software=ex.software; }
+    r.screenshot = /Screenshot|Ekran görüntüsü|Ekran_goruntusu/i.test((file.name||'')+' '+(r.software||'')) || /<[^>]*UserComment[^>]*>Screenshot/i.test(s);
+    r.whatsapp = /-WA\d{3,}/i.test(file.name||'');
+    return r;
+  }
+
+  function renderLabel(r){
+    const v=$('v1'), e=$('e1'), f=$('f1'); f.innerHTML='';
+    const fact = html => { const li=document.createElement('li'); li.innerHTML=html; f.appendChild(li); };
+    const who = r.issuers.length ? r.issuers.join(', ') : null;
+    const generatedBySD = r.sd || r.comfy;
+
+    if (r.aiSource==='generated' || r.aiSource==='algorithmic' || (r.c2pa && who && r.aiSource) ) {
+      v.className='verdict ai'; v.textContent='Yapay zeka üretim etiketi bulundu';
+      e.textContent='Görselin içinde, yapay zeka ile üretildiğini belirten bir içerik kimliği var. Bu güçlü bir işarettir.';
+    } else if (r.aiSource==='composite') {
+      v.className='verdict ai'; v.textContent='Yapay zeka ile düzenlenmiş';
+      e.textContent='Görselin içindeki kimlik, bir kısmının yapay zeka ile oluşturulduğunu ya da değiştirildiğini belirtiyor (örneğin üretken dolgu).';
+    } else if (generatedBySD) {
+      v.className='verdict ai'; v.textContent='Üretim aracı izi bulundu';
+      e.textContent='Dosyanın içinde '+(r.comfy?'ComfyUI':'Stable Diffusion')+' üretim ayarları (komut, adım sayısı vb.) kayıtlı. Bu, görselin bu araçla üretildiğini güçlü biçimde gösterir.';
+    } else if (r.c2pa && who) {
+      v.className='verdict mid'; v.textContent='İçerik kimliği var: '+who;
+      e.textContent='Görselde imzalı bir içerik kimliği ve bir yapay zeka şirketinin adı var, ancak "yapay zeka ile üretildi" ifadesi açıkça okunamadı. Derin analizle desteklemenizi öneririz.';
+    } else if (r.c2pa) {
+      v.className='verdict mid'; v.textContent='İçerik kimliği var, yapay zeka belirtilmemiş';
+      e.textContent='Görselde imzalı bir içerik kimliği (C2PA) bulundu ama yapay zeka kaynağı belirtilmemiş. Bazı kameralar ve düzenleme programları da bu kimliği ekler.';
+    } else if (who) {
+      v.className='verdict mid'; v.textContent='Üretici adı geçiyor: '+who;
+      e.textContent='Dosyanın üst verilerinde bir yapay zeka aracının adı geçiyor. İmzalı bir kimlik olmadığı için bu tek başına kesin değildir.';
+    } else {
+      v.className='verdict none'; v.textContent='Yapay zeka etiketi bulunamadı';
+      e.textContent = (r.whatsapp||r.screenshot)
+        ? 'Bu beklenen bir sonuç: görsel '+(r.whatsapp?'WhatsApp üzerinden gelmiş':'bir ekran görüntüsü')+' görünüyor ve bu yollar etiketleri siler. Etiketin olmaması görselin gerçek olduğunu kanıtlamaz; derin analiz daha anlamlı olur.'
+        : 'Görselde yapay zeka etiketi yok. Bu, görselin gerçek olduğunu kanıtlamaz: birçok araç etiket koymaz, paylaşım uygulamaları da etiketleri siler. Emin olmak için derin analiz yapabilirsiniz.';
+    }
+    if (who && !(v.textContent.includes(who))) fact('Adı geçen üretici: <b>'+esc(who)+'</b>');
+    if (r.c2pa) fact('İçerik kimliği (C2PA): <b>var</b> — imza bu sitede doğrulanmadı');
+    if (r.camera) fact('Kamera bilgisi: <b>'+esc(r.camera)+'</b> — tek başına kanıt değildir, değiştirilebilir');
+    if (r.software && !r.camera) fact('Yazılım bilgisi: <b>'+esc(r.software)+'</b>');
+    if (r.whatsapp) fact('Dosya adı WhatsApp\'tan geldiğini gösteriyor: <b>etiketler büyük ihtimalle silinmiş</b>');
+    if (r.screenshot) fact('Ekran görüntüsü gibi görünüyor: <b>orijinal etiketler taşınmamış olabilir</b>');
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  /* ---------- 2. adım: derin analiz ---------- */
+  function resetDeep(){ $('deepIdle').hidden=false; $('deepResult').hidden=true; $('deepErr').hidden=true; const b=$('deepBtn'); b.disabled=false; b.textContent='Derin analiz yap'; }
+
+  async function refreshQuota(){
+    try {
+      const r = await fetch(API, {method:'GET'}); const d = await r.json();
+      if (!d.configured) { $('quota').textContent='Derin analiz şu an kapalı.'; $('deepBtn').disabled=true; return; }
+      const q=d.quota||{};
+      if (q.userLeft===0) { $('quota').textContent='Bugünkü kişisel hakkınız doldu (günde 3).'; $('deepBtn').disabled=true; }
+      else if (q.imagesLeftToday===0) { $('quota').textContent='Bugünkü ücretsiz kota doldu, yarın yenilenir.'; $('deepBtn').disabled=true; }
+      else $('quota').textContent='Bugün '+q.userLeft+' hakkınız var.';
+    } catch(e) { $('quota').textContent=''; }
+  }
+
+  async function shrink(file){
+    // Görseli en fazla 1280 px'e küçültür (hızlı gönderim); üst veriler bu kopyada taşınmaz.
+    let bmp;
+    try { bmp = await createImageBitmap(file); }
+    catch(e) { throw new Error('Bu görsel biçimi tarayıcınızda açılamadı (örneğin HEIC). Görseli JPG olarak kaydedip tekrar deneyin.'); }
+    const max=1280, k=Math.min(1, max/Math.max(bmp.width,bmp.height));
+    const c=document.createElement('canvas'); c.width=Math.round(bmp.width*k); c.height=Math.round(bmp.height*k);
+    c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+    return await new Promise(res=>c.toBlob(res,'image/jpeg',0.92));
+  }
+
+  $('deepBtn').addEventListener('click', async () => {
+    if (!current) return;
+    const b=$('deepBtn'), err=$('deepErr'); err.hidden=true;
+    b.disabled=true; b.innerHTML='<span class="spin"></span>Analiz ediliyor…';
+    try {
+      const blob = await shrink(current);
+      const r = await fetch(API, {method:'POST', headers:{'Content-Type':'image/jpeg'}, body: blob});
+      const d = await r.json();
+      if (!r.ok || !d.ok) throw new Error(d.error || 'Analiz yapılamadı.');
+      showDeep(d);
+    } catch(e) {
+      err.textContent = e.message || 'Analiz servisine ulaşılamadı.'; err.hidden=false;
+      b.disabled=false; b.textContent='Tekrar dene';
+    }
+  });
+
+  function showDeep(d){
+    $('deepIdle').hidden=true; $('deepResult').hidden=false;
+    const p=d.aiProbability, col = p>=70?'#f0685c':p>=30?'#f2b34a':'#3fe0d0';
+    const ring=$('ringVal'); ring.style.stroke=col; requestAnimationFrame(()=>{ ring.style.strokeDashoffset = 314 - 314*p/100; });
+    const pct=$('ringPct'); pct.textContent='%'+p; pct.style.color=col;
+    const v=$('v2'), e=$('e2');
+    if (p>=70){ v.className='verdict ai'; v.textContent='Yapay zeka üretimi olma ihtimali yüksek'; e.textContent='Model, görselin piksellerinde yapay zeka üretimine özgü izler buldu. Yine de bu bir tahmindir.'; }
+    else if (p>=30){ v.className='verdict mid'; v.textContent='Belirsiz'; e.textContent='Model net bir karar veremedi. Görsel düzenlenmiş, sıkıştırılmış ya da kısmen yapay zeka ile değiştirilmiş olabilir.'; }
+    else { v.className='verdict ok'; v.textContent='Gerçek fotoğrafa benziyor'; e.textContent='Model belirgin bir yapay zeka izi bulmadı. Bu, görselin gerçek olduğunu kanıtlamaz ama güçlü bir işarettir.'; }
+    const g=$('gens'); g.innerHTML='';
+    if (p>=30 && d.generators && d.generators.length){
+      const h=document.createElement('div'); h.className='quota'; h.textContent='En çok benzediği üreticiler:'; g.appendChild(h);
+      d.generators.forEach(x=>{ const row=document.createElement('div'); row.className='gen';
+        row.innerHTML='<span>'+esc(x.name)+'</span><span class="bar"><i style="width:'+x.score+'%"></i></span><span>%'+x.score+'</span>'; g.appendChild(row); });
+    }
+    const q=d.quota||{}; $('quotaAfter').textContent = 'Bugün kalan derin analiz hakkınız: '+(q.userLeft??'—');
+  }
+})();
+</script>
+</body>
+</html>

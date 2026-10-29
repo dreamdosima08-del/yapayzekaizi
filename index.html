@@ -151,6 +151,10 @@
   .tag .pip{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
   h1{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.025em;font-size:clamp(36px,6.2vw,64px);line-height:1.02;margin-bottom:18px;}
   h1 em{font-style:normal;font-weight:900;color:var(--amber);}
+  .img-promo{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;font-size:14px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:100px;padding:7px 16px;transition:border-color .2s,color .2s}
+  .img-promo:hover{border-color:var(--amber);color:var(--paper)}
+  .img-promo b{color:var(--amber);font-weight:600}
+  .ip-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber)}
   .hero p{color:var(--muted);font-size:clamp(16px,2.1vw,19px);max-width:580px;margin:0 auto}
   .hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
   .btn{font-family:inherit;font-weight:600;font-size:15px;border-radius:11px;padding:13px 26px;cursor:pointer;
@@ -313,6 +317,7 @@
     <div class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz1" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz1)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</div>
     <div class="nav-links">
       <a href="#analyzer">Analiz</a>
+      <a href="gorsel.html">Görsel analizi</a>
       <a href="#how">Nasıl çalışır</a>
       <a href="#signals">Sinyaller</a>
       <a href="blog.html">Blog</a>
@@ -323,7 +328,7 @@
   </nav>
 
   <header class="hero">
-    <span class="tag"><span class="pip"></span> Türkçe metin analizi · Motor v3</span>
+    <a class="img-promo" href="gorsel.html"><span class="ip-dot"></span> Yeni: <b>Fotoğraf yapay zeka mı?</b> Görsel analizini deneyin →</a>
     <h1>Bir metinde ne kadar<br><em>yapay zeka etkisi</em> var?</h1>
     <p>Ödev, tez, makale veya blog yazısı — herhangi bir Türkçe metni yapıştırın, yapay zeka etkisini ölçelim. Ücretsiz, kayıtsız ve dürüst. Kesin hüküm vermeyiz; açıklanabilir bir tahmin sunarız.</p>
   </header>
@@ -347,7 +352,7 @@
                 <circle class="ring-fill" id="fill" cx="100" cy="100" r="78" stroke-dasharray="490" stroke-dashoffset="490"></circle>
               </svg>
               <div class="center">
-                <div class="pct" id="pct">0%</div>
+                <div class="pct" id="pct">%0</div>
                 <div class="pct-sub">AI etki sinyali</div>
               </div>
             </div>
@@ -456,6 +461,7 @@
   <footer>
     <div class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="lz2" x1="6" y1="20" x2="34" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#3fe0d0"/><stop offset="1" stop-color="#f2b34a"/></linearGradient></defs><path d="M6 24 C 10 24, 11 14, 15 14 S 20 26, 24 26 S 28 17, 31 20" stroke="url(#lz2)" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="33.5" cy="20" r="3.4" fill="#f2b34a"/><circle cx="33.5" cy="20" r="6.2" stroke="#f2b34a" stroke-opacity="0.35" stroke-width="1.3" fill="none"/></svg> YapayZekaİzi</div>
     <div class="foot-links">
+      <a href="gorsel.html">Görsel analizi</a>
       <a href="blog.html">Blog</a>
       <a href="yasal.html#gizlilik">Gizlilik</a>
       <a href="yasal.html#kullanim">Kullanım Şartları</a>
@@ -554,7 +560,7 @@ go.addEventListener('click',async()=>{
   const circ=490,fill=document.getElementById('fill'),col=colorFor(p);
   setTimeout(()=>{fill.style.strokeDashoffset=circ-(circ*p/100);fill.style.stroke=col;fill.style.color=col;},60);
   const pctEl=document.getElementById('pct');let cur=0;
-  (function step(){cur+=Math.ceil((p-cur)/8)||1;if(cur>=p)cur=p;pctEl.textContent=cur+'%';pctEl.style.color=col;if(cur<p)requestAnimationFrame(step);})();
+  (function step(){cur+=Math.ceil((p-cur)/8)||1;if(cur>=p)cur=p;pctEl.textContent='%'+cur;pctEl.style.color=col;if(cur<p)requestAnimationFrame(step);})();
   const v=verdictFor(p);
   document.getElementById('verdict').textContent=v[0];
   document.getElementById('verdictSub').textContent=v[1];

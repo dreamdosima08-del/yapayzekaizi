@@ -14,6 +14,7 @@ YapayZekaİzi, bir metnin ne kadar "yapay zeka etkisi" taşıdığını Türkçe
 - Kişi değil, metin değerlendirilir.
 
 ## Önemli Sayfalar
+- [Görsel Analizi](https://yapayzekaizi.com/gorsel.html): Fotoğraflardaki yapay zeka etiketlerini (C2PA) tarayıcıda kontrol eden ve isteğe bağlı derin analizle yapay zeka ihtimalini tahmin eden araç.
 - [Ana Sayfa / Analiz Aracı](https://yapayzekaizi.com/): Metin analizi yapılan ana araç.
 - [Blog](https://yapayzekaizi.com/blog.html): Yapay zeka tespiti, içerik güvenilirliği ve Türkçe AI analizi üzerine rehberler.
 - [Tespit gerçekten mümkün mü?](https://yapayzekaizi.com/blog-ai-tespit-mumkun-mu.html): AI dedektörlerin nasıl çalıştığı ve neden kesin sonuç veremediği.
