@@ -298,6 +298,16 @@
   });
   $('change').addEventListener('click', () => { input.value=''; input.click(); });
 
+  /* ---------- Android uygulaması köprüsü (Paylaş → YapayZekaİzi) ---------- */
+  const appPost = m => { try { if (window.YZIApp) window.YZIApp.postMessage(JSON.stringify(m)); } catch(e){} };
+  window.yziReceive = (name, mime, b64) => {
+    try {
+      const bin=atob(b64), u8=new Uint8Array(bin.length);
+      for (let i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i);
+      handle(new File([u8], name||'paylasilan-gorsel.jpg', {type: mime||'image/jpeg'}));
+    } catch(e) { alert('Paylaşılan görsel açılamadı.'); }
+  };
+
   function fmtSize(b){ return b>1048576 ? (b/1048576).toFixed(1)+' MB' : Math.round(b/1024)+' KB'; }
 
   async function handle(file){
@@ -310,6 +320,7 @@
     resetDeep();
     const buf = await file.arrayBuffer();
     renderLabel(scan(new Uint8Array(buf), file));
+    appPost({type:'scan_done'});
     refreshQuota();
     preview.scrollIntoView({behavior:'smooth', block:'nearest'});
   }
