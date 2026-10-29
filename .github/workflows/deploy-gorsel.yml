@@ -1,0 +1,87 @@
+# worker-gorsel/ değişince görsel analiz Worker'ını Cloudflare'e yükler,
+# Sightengine anahtarlarını Worker'a gizli olarak tanımlar ve canlı durumu doğrular.
+name: Görsel analiz motorunu yayınla
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "worker-gorsel/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-gorsel
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Anahtarlar tanımlı mı?
+        id: check
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SE_USER: ${{ secrets.SIGHTENGINE_API_USER }}
+          SE_SECRET: ${{ secrets.SIGHTENGINE_API_SECRET }}
+        run: |
+          missing=""
+          [ -z "$CF_TOKEN" ] && missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -z "$SE_USER" ] && missing="$missing SIGHTENGINE_API_USER"
+          [ -z "$SE_SECRET" ] && missing="$missing SIGHTENGINE_API_SECRET"
+          if [ -n "$missing" ]; then
+            echo "::warning::Eksik anahtar(lar):$missing — yayın atlandı."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ready == 'true'
+        with:
+          node-version: 22
+
+      - name: Sözdizimi kontrolü
+        if: steps.check.outputs.ready == 'true'
+        run: node --check worker-gorsel/worker.js
+
+      - name: Cloudflare'e yayınla ve anahtarları tanımla
+        if: steps.check.outputs.ready == 'true'
+        working-directory: worker-gorsel
+        env:
+          RAW_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RAW_SE_USER: ${{ secrets.SIGHTENGINE_API_USER }}
+          RAW_SE_SECRET: ${{ secrets.SIGHTENGINE_API_SECRET }}
+        run: |
+          set -o pipefail
+          CLOUDFLARE_API_TOKEN=$(printf '%s' "$RAW_TOKEN" | tr -d '[:space:]')
+          SE_USER=$(printf '%s' "$RAW_SE_USER" | tr -d '[:space:]')
+          SE_SECRET=$(printf '%s' "$RAW_SE_SECRET" | tr -d '[:space:]')
+          echo "::add-mask::$CLOUDFLARE_API_TOKEN"; echo "::add-mask::$SE_SECRET"
+          export CLOUDFLARE_API_TOKEN
+          npx --yes wrangler@4 deploy 2>&1 | tee ../deploy.log
+          printf '%s' "$SE_USER"   | npx --yes wrangler@4 secret put SIGHTENGINE_API_USER   2>&1 | tee -a ../deploy.log
+          printf '%s' "$SE_SECRET" | npx --yes wrangler@4 secret put SIGHTENGINE_API_SECRET 2>&1 | tee -a ../deploy.log
+
+      - name: Hata özeti
+        if: failure() && steps.check.outputs.ready == 'true'
+        run: |
+          [ -f deploy.log ] || exit 0
+          sed 's/\x1b\[[0-9;]*m//g' deploy.log | grep -v '^\s*$' | tail -15 | while IFS= read -r line; do
+            echo "::error::$line"
+          done
+
+      - name: Canlı durumu doğrula
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          for i in 1 2 3 4 5 6 7 8; do
+            out=$(curl -s -H "Origin: https://yapayzekaizi.com" https://yapayzekaizi-gorsel.dreamdosima08.workers.dev)
+            if echo "$out" | grep -q '"configured":true' && echo "$out" | grep -q '"kv":true'; then
+              echo "::notice::Görsel motor canlı: $out"; exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Görsel motor beklenen durumu döndürmedi: $out"; exit 1

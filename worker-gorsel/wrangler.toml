@@ -1,0 +1,16 @@
+# YapayZekaİzi görsel derin analiz Worker'ı — GitHub Actions ile otomatik yayınlanır.
+# Sightengine anahtarları burada DEĞİL; GitHub Secrets'tan Worker secret olarak yüklenir.
+name = "yapayzekaizi-gorsel"
+account_id = "1b0a0a3ba97a553dca360230744b5471"
+main = "worker.js"
+compatibility_date = "2026-06-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "KOTA"
+id = "ee1ed778d0c44f3299e5a5215fe2416f"
+
+[vars]
+MONTHLY_OPS = "1900"
+DAILY_OPS = "60"
+PER_USER_DAILY = "3"
