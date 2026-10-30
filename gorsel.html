@@ -299,6 +299,7 @@
   $('change').addEventListener('click', () => { input.value=''; input.click(); });
 
   /* ---------- Android uygulaması köprüsü (Paylaş → YapayZekaİzi) ---------- */
+  const inApp = /YapayZekaIziApp/.test(navigator.userAgent);
   const appPost = m => { try { if (window.YZIApp) window.YZIApp.postMessage(JSON.stringify(m)); } catch(e){} };
   window.yziReceive = (name, mime, b64) => {
     try {
@@ -429,13 +430,20 @@
   function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
   /* ---------- 2. adım: derin analiz ---------- */
-  function resetDeep(){ $('deepIdle').hidden=false; $('deepResult').hidden=true; $('deepErr').hidden=true; const b=$('deepBtn'); b.disabled=false; b.textContent='Derin analiz yap'; }
+  const DEEP_LABEL = inApp ? 'Reklam izle, derin analiz yap' : 'Derin analiz yap';
+  function resetDeep(){ $('deepIdle').hidden=false; $('deepResult').hidden=true; $('deepErr').hidden=true; const b=$('deepBtn'); b.disabled=false; b.textContent=DEEP_LABEL; }
 
   async function refreshQuota(){
     try {
       const r = await fetch(API, {method:'GET'}); const d = await r.json();
       if (!d.configured) { $('quota').textContent='Derin analiz şu an kapalı.'; $('deepBtn').disabled=true; return; }
       const q=d.quota||{};
+      if (inApp) {
+        if (q.imagesLeftToday===0) { $('quota').textContent='Bugünkü derin analiz kotası doldu, yarın yenilenir.'; $('deepBtn').disabled=true; }
+        else if (q.rewardLeft===0 && q.userLeft===0) { $('quota').textContent='Bugünkü derin analiz hakkınız doldu.'; $('deepBtn').disabled=true; }
+        else $('quota').textContent='Kısa bir reklam izleyerek ücretsiz analiz yapabilirsiniz.';
+        return;
+      }
       if (q.userLeft===0) { $('quota').textContent='Bugünkü kişisel hakkınız doldu (günde 3).'; $('deepBtn').disabled=true; }
       else if (q.imagesLeftToday===0) { $('quota').textContent='Bugünkü ücretsiz kota doldu, yarın yenilenir.'; $('deepBtn').disabled=true; }
       else $('quota').textContent='Bugün '+q.userLeft+' hakkınız var.';
@@ -453,13 +461,36 @@
     return await new Promise(res=>c.toBlob(res,'image/jpeg',0.92));
   }
 
+  // Uygulamada: önce ödüllü reklam. Uygulama sonucu window.yziRewardResult(fis, durum) ile bildirir.
+  // durum: 'earned' (izlendi) | 'cancelled' (yarıda kapatıldı) | 'unavailable' (reklam yok → normal hakla devam)
+  let rewardWait = null;
+  window.yziRewardResult = (fis, durum) => { if (rewardWait && rewardWait.fis===fis) { const w=rewardWait; rewardWait=null; w.done(durum); } };
+  function askReward(){
+    return new Promise(done => {
+      const fis = (crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(16)+Math.random().toString(16).slice(2)+'0000000000000000').slice(0,32));
+      rewardWait = { fis, done: d => done({fis, durum:d}) };
+      appPost({type:'reward', nonce:fis});
+    });
+  }
+
   $('deepBtn').addEventListener('click', async () => {
     if (!current) return;
     const b=$('deepBtn'), err=$('deepErr'); err.hidden=true;
-    b.disabled=true; b.innerHTML='<span class="spin"></span>Analiz ediliyor…';
+    b.disabled=true;
+    const headers = {'Content-Type':'image/jpeg'};
+    if (inApp && window.YZIApp) {
+      b.innerHTML='<span class="spin"></span>Reklam açılıyor…';
+      const r = await askReward();
+      if (r.durum==='cancelled') {
+        err.textContent='Derin analiz için reklamın sonuna kadar izlenmesi gerekiyor.'; err.hidden=false;
+        b.disabled=false; b.textContent=DEEP_LABEL; return;
+      }
+      if (r.durum==='earned') headers['X-Odul']=r.fis;
+    }
+    b.innerHTML='<span class="spin"></span>Analiz ediliyor…';
     try {
       const blob = await shrink(current);
-      const r = await fetch(API, {method:'POST', headers:{'Content-Type':'image/jpeg'}, body: blob});
+      const r = await fetch(API, {method:'POST', headers, body: blob});
       const d = await r.json();
       if (!r.ok || !d.ok) throw new Error(d.error || 'Analiz yapılamadı.');
       showDeep(d);
@@ -484,7 +515,7 @@
       d.generators.forEach(x=>{ const row=document.createElement('div'); row.className='gen';
         row.innerHTML='<span>'+esc(x.name)+'</span><span class="bar"><i style="width:'+x.score+'%"></i></span><span>%'+x.score+'</span>'; g.appendChild(row); });
     }
-    const q=d.quota||{}; $('quotaAfter').textContent = 'Bugün kalan derin analiz hakkınız: '+(q.userLeft??'—');
+    const q=d.quota||{}; $('quotaAfter').textContent = inApp ? '' : 'Bugün kalan derin analiz hakkınız: '+(q.userLeft??'—');
   }
 })();
 </script>

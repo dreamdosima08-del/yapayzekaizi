@@ -14,3 +14,13 @@ id = "ee1ed778d0c44f3299e5a5215fe2416f"
 MONTHLY_OPS = "1900"
 DAILY_OPS = "60"
 PER_USER_DAILY = "3"
+REWARD_USER_DAILY = "10"
+
+# Ödüllü reklam fişleri: her yerden tutarlı okunması için tek bir Durable Object (ücretsiz planda SQLite)
+[[durable_objects.bindings]]
+name = "ODUL"
+class_name = "OdulKasasi"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["OdulKasasi"]
